@@ -2,8 +2,10 @@ package tests;
 
 import com.ultimateqa.config.ConfigLoader;
 import library.TestCase;
+import library.pages.HomePage;
+import org.junit.Assert;
 import org.junit.Test;
-
+import org.openqa.selenium.By;
 
 public class OpenHomePageTest extends TestCase {
 
@@ -11,10 +13,10 @@ public class OpenHomePageTest extends TestCase {
     public void openPageTest() {
         driver.get(ConfigLoader.getProperty("baseUrl"));
 
-        try {
-            Thread.sleep(10000);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        new HomePage(driver).waitForPageContent();
+
+        Assert.assertTrue("Home page is not visible",
+                driver.findElement(By.id("menu-main-menu"))
+                        .isDisplayed());
     }
 }

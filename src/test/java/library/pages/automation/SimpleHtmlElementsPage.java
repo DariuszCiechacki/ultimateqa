@@ -1,4 +1,4 @@
-package library.pages;
+package library.pages.automation;
 
 import library.BasePage;
 import org.openqa.selenium.WebDriver;
