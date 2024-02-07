@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 
 public class OpenHomePageTest extends TestCase {
-
     @Test
     public void openPageTest() {
         driver.get(ConfigLoader.getProperty("baseUrl"));
@@ -16,7 +15,7 @@ public class OpenHomePageTest extends TestCase {
         new HomePage(driver).waitForPageContent();
 
         Assert.assertTrue("Home page is not visible",
-                driver.findElement(By.id("menu-main-menu"))
+                driver.findElement(By.id("Automation_Practice"))
                         .isDisplayed());
     }
 }
