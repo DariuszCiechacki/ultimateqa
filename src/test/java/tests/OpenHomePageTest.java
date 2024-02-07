@@ -1,14 +1,15 @@
 package tests;
 
+import com.ultimateqa.config.ConfigLoader;
 import library.TestCase;
 import org.junit.Test;
 
 
-public class OpenPageTest extends TestCase {
+public class OpenHomePageTest extends TestCase {
 
     @Test
     public void openPageTest() {
-        driver.get("https://ultimateqa.com/automation/");
+        driver.get(ConfigLoader.getProperty("baseUrl"));
 
         try {
             Thread.sleep(10000);

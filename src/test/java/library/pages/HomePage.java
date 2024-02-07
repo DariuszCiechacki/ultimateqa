@@ -10,6 +10,7 @@ public class HomePage extends BasePage {
 
     public HomePage waitForPageContent(){
 
+
         return this;
     }
 }
