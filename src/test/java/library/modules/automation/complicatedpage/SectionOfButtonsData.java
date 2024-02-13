@@ -14,7 +14,7 @@ public class SectionOfButtonsData extends BasePage {
 
     public int countButtonsInSectionOfButtons(){
         List<WebElement> buttons = driver.findElements(
-                By.xpath("//div[contains(@class,'et_pb_row et_pb_row_2 et_pb_row_4col')]"));
+                By.xpath("//div[contains(@class,'et_pb_row et_pb_row_2 et_pb_row_4col')]//a"));
 
         return buttons.size();
     }
