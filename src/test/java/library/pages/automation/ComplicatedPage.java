@@ -1,6 +1,7 @@
 package library.pages.automation;
 
 import library.BasePage;
+import library.modules.automation.complicatedpage.SectionOfButtonsData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,9 +22,8 @@ public class ComplicatedPage extends BasePage {
     }
 
     public int countButtonsInSectionOfButtons(){
-        List<WebElement> buttons = driver.findElements(
-                By.xpath("//div[contains(@class,'et_pb_row et_pb_row_2 et_pb_row_4col')]"));
-
-        return buttons.size();
+        return new SectionOfButtonsData(driver).countButtonsInSectionOfButtons();
     }
+
+
 }
