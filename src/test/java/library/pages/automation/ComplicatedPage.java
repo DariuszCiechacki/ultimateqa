@@ -33,8 +33,8 @@ public class ComplicatedPage extends BasePage {
     }
 
     //section of social media follows
-    public int verifySocialMediaNavigationLinks(String socialMedia, String expectedNavigationLink){
+    public List<String> getSocialMediaNavigationLinks(String socialMedia){
         return new SectionOfSocialMediaFollowsData(driver)
-                .verifySocialMediaNavigationLinks(socialMedia, expectedNavigationLink);
+                .getSocialMediaNavigationLinks(socialMedia);
     }
 }
