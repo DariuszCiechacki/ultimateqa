@@ -10,6 +10,7 @@ import org.openqa.selenium.By;
 
 public class VerifyButtonsTextTest extends TestCase {
     protected String expectedButtonsText = "Button";
+
     @Test
     public void verifyButtonsTextTest() {
         driver.get(ConfigLoader.getProperty("baseUrl"));
@@ -26,6 +27,9 @@ public class VerifyButtonsTextTest extends TestCase {
         Assert.assertTrue("Complicated page is not visible",
                 driver.findElement(By.id("Skills_Improved"))
                         .isDisplayed());
+
+        Assert.assertFalse("List of buttons text is empty",
+                complicatedPage.getButtonsText().isEmpty());
 
         complicatedPage.getButtonsText().forEach(buttonText -> Assert.assertEquals(
                 "Button text does not match",

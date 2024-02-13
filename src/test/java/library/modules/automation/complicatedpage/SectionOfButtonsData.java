@@ -22,7 +22,7 @@ public class SectionOfButtonsData extends BasePage {
     }
 
     public List<String> getButtonsText(){
-        List<WebElement> buttons = driver.findElements(By.id(buttonsXpath));
+        List<WebElement> buttons = driver.findElements(By.xpath(buttonsXpath));
 
         List<String> buttonsText = new ArrayList<>();
 
