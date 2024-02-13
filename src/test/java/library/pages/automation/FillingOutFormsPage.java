@@ -3,6 +3,7 @@ package library.pages.automation;
 import library.BasePage;
 import library.modules.automation.fillingoutforms.FormsData;
 import library.modules.automation.fillingoutforms.FormsDto;
+import library.services.CaptchaHandler;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,7 +34,7 @@ public class FillingOutFormsPage extends BasePage {
 
             if(form.findElement(By.xpath("//input[contains(@name,'captcha')]"))
                     .isDisplayed()){
-                //fill captcha
+                new CaptchaHandler(driver).handleCaptcha(form);
             }
 
             clickSubmitButton(form);
