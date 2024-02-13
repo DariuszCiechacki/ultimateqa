@@ -21,9 +21,12 @@ public class ComplicatedPage extends BasePage {
         return this;
     }
 
+    //Section of buttons
     public int countButtonsInSectionOfButtons(){
         return new SectionOfButtonsData(driver).countButtonsInSectionOfButtons();
     }
 
-
+    public List<String> getButtonsText(){
+        return new SectionOfButtonsData(driver).getButtonsText();
+    }
 }
