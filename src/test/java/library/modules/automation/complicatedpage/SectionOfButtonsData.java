@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SectionOfButtonsData extends BasePage {
-    String buttonsXpath = "//div[contains(@class,'et_pb_row et_pb_row_2 et_pb_row_4col')]//a";
+    public static String buttonsXpath = "//div[contains(@class,'et_pb_row et_pb_row_2 et_pb_row_4col')]//a";
 
     public SectionOfButtonsData(WebDriver driver) {
         super(driver);
