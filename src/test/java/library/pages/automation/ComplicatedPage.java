@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
+import java.util.Map;
 
 public class ComplicatedPage extends BasePage {
     public ComplicatedPage(WebDriver driver) {
@@ -29,4 +30,6 @@ public class ComplicatedPage extends BasePage {
     public List<String> getButtonsText(){
         return new SectionOfButtonsData(driver).getButtonsText();
     }
+
+    //section of social media follows
 }
