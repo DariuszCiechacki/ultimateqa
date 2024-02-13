@@ -2,6 +2,7 @@ package library.pages.automation;
 
 import library.BasePage;
 import library.modules.automation.complicatedpage.SectionOfButtonsData;
+import library.modules.automation.complicatedpage.SectionOfSocialMediaFollowsData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
+import java.util.Map;
 
 public class ComplicatedPage extends BasePage {
     public ComplicatedPage(WebDriver driver) {
@@ -28,5 +30,11 @@ public class ComplicatedPage extends BasePage {
 
     public List<String> getButtonsText(){
         return new SectionOfButtonsData(driver).getButtonsText();
+    }
+
+    //section of social media follows
+    public List<String> getSocialMediaNavigationLinks(String socialMedia){
+        return new SectionOfSocialMediaFollowsData(driver)
+                .getSocialMediaNavigationLinks(socialMedia);
     }
 }
