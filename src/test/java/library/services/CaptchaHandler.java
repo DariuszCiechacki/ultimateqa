@@ -13,7 +13,7 @@ public class CaptchaHandler extends BasePage {
 
     public void handleCaptcha(WebElement captchaContainer){
         WebElement captchaInput = captchaContainer.findElement(
-                By.xpath("//input[contains(@name,'et_pb_contact_captcha')]"));
+                By.xpath(".//input[contains(@name,'et_pb_contact_captcha')]"));
 
         String firstDigit = captchaInput.getAttribute("data-first_digit");
         String secondDigit = captchaInput.getAttribute("data-second_digit");
