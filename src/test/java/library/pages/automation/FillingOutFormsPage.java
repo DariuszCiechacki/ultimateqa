@@ -37,7 +37,8 @@ public class FillingOutFormsPage extends BasePage {
         WebElement form = driver.findElement(
                 By.xpath("//div[@id='et_pb_contact_form_"+adjustedFormNumber+"']"));
 
-        form.findElement(By.xpath(".//button[@name='et_builder_submit_button']"));
+        form.findElement(By.xpath(".//button[@name='et_builder_submit_button']"))
+                .click();
 
         return this;
     }

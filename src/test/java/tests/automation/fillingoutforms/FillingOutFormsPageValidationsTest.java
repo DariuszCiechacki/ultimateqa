@@ -33,25 +33,21 @@ public class FillingOutFormsPageValidationsTest extends TestCase {
         fillingOutFormsPage.clickSubmitButton(1);
 
         Assert.assertTrue("Name field is not marked as required",
-                driver.findElement(By.xpath("//textarea[@name='et_pb_contact_message_0']" +
-                        "//input[@data-original_id='name' and contains(@class,'error')]"))
+                driver.findElement(By.xpath("//input[@name='et_pb_contact_name_0' and contains(@class, 'error')]"))
                 .isDisplayed());
 
         Assert.assertTrue("Message field is not marked as required",
-                driver.findElement(By.xpath("//textarea[@name='et_pb_contact_message_0']" +
-                        "//textarea[@data-original_id='message' and contains(@class,'error')]"))
+                driver.findElement(By.xpath("//textarea[@name='et_pb_contact_message_0' and contains(@class, 'error')]"))
                 .isDisplayed());
 
         fillingOutFormsPage.clickSubmitButton(2);
 
         Assert.assertTrue("Name field is not marked as required",
-                driver.findElement(By.xpath("//textarea[@name='et_pb_contact_message_1']" +
-                        "//input[@data-original_id='name' and contains(@class,'error')]"))
+                driver.findElement(By.xpath("//input[@name='et_pb_contact_name_1' and contains(@class, 'error')]"))
                 .isDisplayed());
 
         Assert.assertTrue("Message field is not marked as required",
-                driver.findElement(By.xpath("//textarea[@name='et_pb_contact_message_1']" +
-                        "//textarea[@data-original_id='message' and contains(@class,'error')]"))
+                driver.findElement(By.xpath("//textarea[@name='et_pb_contact_message_1' and contains(@class, 'error')]"))
                 .isDisplayed());
     }
 }
