@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FillingOutFormsPage extends BasePage {
@@ -26,31 +27,23 @@ public class FillingOutFormsPage extends BasePage {
     }
 
     public FillingOutFormsPage fillForm(int formNumber, FormsDto formsDto) {
-        int adjustedFormNumber = formNumber - 1;
-        WebElement form = driver.findElement(
-                By.xpath("//div[@id='et_pb_contact_form_"+adjustedFormNumber+"']"));
-
-        new FormsData(driver)
-                .enterName(form, formsDto.getName())
-                .enterMessage(form, formsDto.getMessage());
-
-        try{
-            WebElement captcha = form.findElement(By.xpath(".//input[contains(@name,'captcha')]"));
-            if (captcha.isDisplayed()) {
-                new CaptchaHandler(driver).handleCaptcha(form);
-            }
-        }
-        catch (Exception e){}
-
-        clickSubmitButton(form);
+        new FormsData(driver).fillForm(formNumber, formsDto);
 
         return this;
     }
 
-    private void clickSubmitButton(WebElement form) {
-        WebElement submitButton = form.findElement(By.xpath(".//button[@name='et_builder_submit_button']"));
-        submitButton.click();
+    public FillingOutFormsPage clickSubmitButton(int formNumber){
+        int adjustedFormNumber = formNumber - 1;
+        WebElement form = driver.findElement(
+                By.xpath("//div[@id='et_pb_contact_form_"+adjustedFormNumber+"']"));
 
-        wait.until(ExpectedConditions.invisibilityOf(submitButton));
+        form.findElement(By.xpath(".//button[@name='et_builder_submit_button']"))
+                .click();
+
+        return this;
+    }
+
+    public List<String> getRequiredFieldsList(int formNumber) {
+        return new FormsData(driver).getRequiredFieldsList(formNumber);
     }
 }
