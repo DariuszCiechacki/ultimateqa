@@ -8,9 +8,11 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
+import java.util.Map;
+
 public class CompareHtmlTablesTest extends TestCase {
     @Test
-    public void verifyNavigationButtonsTest() {
+    public void compareHtmlTablesTest() {
         driver.get(ConfigLoader.getProperty("baseUrl"));
 
         HomePage homePage = new HomePage(driver).waitForPageContent();
@@ -26,6 +28,10 @@ public class CompareHtmlTablesTest extends TestCase {
                 driver.findElement(By.id("idExample"))
                         .isDisplayed());
 
+        Map<String, Map<String, String>> uniqueTableData = simpleHtmlElementsPage.getUniqueIdTableData();
+        System.out.println(uniqueTableData);
 
+        Assert.assertEquals("Incorrect table size",
+                3, uniqueTableData.size());
     }
 }
