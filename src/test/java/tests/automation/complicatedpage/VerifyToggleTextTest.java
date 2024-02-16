@@ -8,9 +8,11 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
-public class VerifyToggleTest extends TestCase {
+public class VerifyToggleTextTest extends TestCase {
+    protected String expectedToggleText = "Inside of toggle";
+
     @Test
-    public void verifyButtonsStateTest() {
+    public void verifyToggleTextTest() {
         driver.get(ConfigLoader.getProperty("baseUrl"));
 
         HomePage homePage = new HomePage(driver).waitForPageContent();
@@ -26,6 +28,7 @@ public class VerifyToggleTest extends TestCase {
                 driver.findElement(By.id("Skills_Improved"))
                         .isDisplayed());
 
-
+        Assert.assertEquals("Incorrect inside toggle text",
+                expectedToggleText, complicatedPage.getToggleText());
     }
 }

@@ -37,4 +37,20 @@ public class ComplicatedPage extends BasePage {
         return new SectionOfSocialMediaFollowsData(driver)
                 .getSocialMediaNavigationLinks(socialMedia);
     }
+
+    public String getToggleText(){
+        expandToggle();
+
+        return driver.findElement(By.xpath("//div[contains(@class,'et_pb_toggle_content clearfix')]"))
+                .getText();
+    }
+
+    private void expandToggle(){
+        driver.findElement(By.xpath("//span[@id='A_toggle']"))
+                .click();
+
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//div[contains(@class,'et_pb_toggle_content clearfix') and contains(@style,'display: block')]")));
+
+    }
 }
