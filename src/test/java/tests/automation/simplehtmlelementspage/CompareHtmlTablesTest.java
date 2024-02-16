@@ -29,9 +29,14 @@ public class CompareHtmlTablesTest extends TestCase {
                         .isDisplayed());
 
         Map<String, Map<String, String>> uniqueTableData = simpleHtmlElementsPage.getUniqueIdTableData();
-        System.out.println(uniqueTableData);
-
-        Assert.assertEquals("Incorrect table size",
+        Assert.assertEquals("Incorrect unique id table size",
                 3, uniqueTableData.size());
+
+        Map<String, Map<String, String>> noIdTableData = simpleHtmlElementsPage.getNoIdTableData();
+        Assert.assertEquals("Incorrect no id table size",
+                3, noIdTableData.size());
+
+        Assert.assertEquals("Table are not identical",
+                uniqueTableData, noIdTableData);
     }
 }

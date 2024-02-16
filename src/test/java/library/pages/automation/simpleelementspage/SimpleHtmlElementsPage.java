@@ -18,10 +18,6 @@ public class SimpleHtmlElementsPage extends BasePage {
     public SimpleHtmlElementsPage waitForPageContent(){
         wait.until(ExpectedConditions.elementToBeClickable(By.id("idExample")));
 
-        try {
-            Thread.sleep(5000);
-        }catch (Exception e){}
-
         return this;
     }
 
@@ -37,6 +33,26 @@ public class SimpleHtmlElementsPage extends BasePage {
         Map<String, Map<String, String>> uniqueIdTableData = new HashMap<>();
 
         WebElement table = driver.findElement(By.id("htmlTableId"));
+        List<WebElement> rows = table.findElements(By.xpath(".//td//ancestor::tr"));
+
+        for (WebElement row : rows){
+            Map<String, String> rowDetails = new HashMap<>();
+
+            List<WebElement> columns = row.findElements(By.xpath(".//td"));
+
+            rowDetails.put("Salary", columns.get(2).getText());
+            rowDetails.put("Work", columns.get(1).getText());
+
+            uniqueIdTableData.put(columns.get(0).getText(), rowDetails);
+        }
+
+        return uniqueIdTableData;
+    }
+
+    public Map<String, Map<String, String>> getNoIdTableData(){
+        Map<String, Map<String, String>> uniqueIdTableData = new HashMap<>();
+
+        WebElement table = driver.findElement(By.xpath("//table[not(@id='htmlTableId')]"));
         List<WebElement> rows = table.findElements(By.xpath(".//td//ancestor::tr"));
 
         for (WebElement row : rows){
