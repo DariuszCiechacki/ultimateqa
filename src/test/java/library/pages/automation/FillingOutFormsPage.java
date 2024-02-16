@@ -43,7 +43,7 @@ public class FillingOutFormsPage extends BasePage {
         return this;
     }
 
-    public List<String> getFieldsNamesWithError(int formNumber) {
-        return new FormsData(driver).getFieldsNamesWithError(formNumber);
+    public List<String> getRequiredFieldsList(int formNumber) {
+        return new FormsData(driver).getRequiredFieldsList(formNumber);
     }
 }

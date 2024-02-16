@@ -48,7 +48,7 @@ public class FillingOutFormsPageValidationsTest extends TestCase {
         try{Thread.sleep(3000);}
         catch (Exception e){}
 
-        List<String> listOfRequiredFieldsForm1 = fillingOutFormsPage.getFieldsNamesWithError(1);
+        List<String> listOfRequiredFieldsForm1 = fillingOutFormsPage.getRequiredFieldsList(1);
 
         Assert.assertEquals("Name field is missing in required fields list",
                 "Name", listOfRequiredFieldsForm1.get(0));
@@ -69,7 +69,7 @@ public class FillingOutFormsPageValidationsTest extends TestCase {
                 driver.findElement(By.xpath("//input[contains(@name,'captcha_1') and contains(@class,'error')]"))
                         .isDisplayed());
 
-        List<String> listOfRequiredFieldsForm2 = fillingOutFormsPage.getFieldsNamesWithError(2);
+        List<String> listOfRequiredFieldsForm2 = fillingOutFormsPage.getRequiredFieldsList(2);
         Assert.assertEquals("Name field is missing in required fields list",
                 "Name", listOfRequiredFieldsForm1.get(0));
 

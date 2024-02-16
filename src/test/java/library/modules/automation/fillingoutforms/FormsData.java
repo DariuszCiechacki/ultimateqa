@@ -51,7 +51,7 @@ public class FormsData extends BasePage {
         return this;
     }
 
-    public List<String> getFieldsNamesWithError(int formNumber) {
+    public List<String> getRequiredFieldsList(int formNumber) {
         List<String> fieldsNamesWithError = new ArrayList<>();
         int adjustedFormNumber = formNumber - 1;
         List<WebElement> errorFieldsList = driver.findElements(
