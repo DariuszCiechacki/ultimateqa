@@ -2,6 +2,7 @@ package library.pages;
 
 import library.BasePage;
 import library.pages.automation.*;
+import library.pages.automation.simpleelementspage.SimpleHtmlElementsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
