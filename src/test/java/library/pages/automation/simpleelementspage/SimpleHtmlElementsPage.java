@@ -1,4 +1,4 @@
-package library.pages.automation;
+package library.pages.automation.simpleelementspage;
 
 import library.BasePage;
 import org.openqa.selenium.By;
@@ -14,5 +14,13 @@ public class SimpleHtmlElementsPage extends BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(By.id("idExample")));
 
         return this;
+    }
+
+    public ButtonSuccessPage navigateToButtonSuccessPage(String xPath){
+
+        driver.findElement(By.xpath(xPath))
+                .click();
+
+        return new ButtonSuccessPage(driver);
     }
 }

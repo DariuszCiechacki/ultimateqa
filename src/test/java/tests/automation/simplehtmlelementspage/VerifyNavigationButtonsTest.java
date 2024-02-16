@@ -3,8 +3,7 @@ package tests.automation.simplehtmlelementspage;
 import com.ultimateqa.config.ConfigLoader;
 import library.TestCase;
 import library.pages.HomePage;
-import library.pages.automation.ComplicatedPage;
-import library.pages.automation.SimpleHtmlElementsPage;
+import library.pages.automation.simpleelementspage.SimpleHtmlElementsPage;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 
