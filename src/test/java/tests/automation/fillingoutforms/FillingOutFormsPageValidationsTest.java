@@ -32,6 +32,9 @@ public class FillingOutFormsPageValidationsTest extends TestCase {
 
         fillingOutFormsPage.clickSubmitButton(1);
 
+        try{Thread.sleep(3000);}
+        catch (Exception e){}
+
         Assert.assertTrue("Name field is not marked as required",
                 driver.findElement(By.xpath("//input[@name='et_pb_contact_name_0' and contains(@class, 'error')]"))
                 .isDisplayed());
@@ -42,6 +45,17 @@ public class FillingOutFormsPageValidationsTest extends TestCase {
 
         fillingOutFormsPage.clickSubmitButton(2);
 
+        try{Thread.sleep(3000);}
+        catch (Exception e){}
+
+        List<String> listOfRequiredFieldsForm1 = fillingOutFormsPage.getFieldsNamesWithError(1);
+
+        Assert.assertEquals("Name field is missing in required fields list",
+                "Name", listOfRequiredFieldsForm1.get(0));
+
+        Assert.assertEquals("Message field is missing in required fields list",
+                "Message", listOfRequiredFieldsForm1.get(1));
+
         Assert.assertTrue("Name field is not marked as required",
                 driver.findElement(By.xpath("//input[@name='et_pb_contact_name_1' and contains(@class, 'error')]"))
                 .isDisplayed());
@@ -49,5 +63,20 @@ public class FillingOutFormsPageValidationsTest extends TestCase {
         Assert.assertTrue("Message field is not marked as required",
                 driver.findElement(By.xpath("//textarea[@name='et_pb_contact_message_1' and contains(@class, 'error')]"))
                 .isDisplayed());
+
+
+        Assert.assertTrue("Captcha field is not marked as required",
+                driver.findElement(By.xpath("//input[contains(@name,'captcha_1') and contains(@class,'error')]"))
+                        .isDisplayed());
+
+        List<String> listOfRequiredFieldsForm2 = fillingOutFormsPage.getFieldsNamesWithError(2);
+        Assert.assertEquals("Name field is missing in required fields list",
+                "Name", listOfRequiredFieldsForm1.get(0));
+
+        Assert.assertEquals("Message field is missing in required fields list",
+                "Message", listOfRequiredFieldsForm1.get(1));
+
+        Assert.assertEquals("Captcha field is missing in required fields list",
+                "Captcha", listOfRequiredFieldsForm1.get(2));
     }
 }
