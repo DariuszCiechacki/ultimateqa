@@ -17,13 +17,11 @@ public class FakeLandingPage extends BasePage {
 
     public FakeLandingPage waitForPageContent() {
         wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//div[contains(@class,'et_section_specialty')]")));
+                By.xpath("//a[contains(@class,'et_pb_button et_pb_button_1')]")));
 
         return this;
     }
 
-    //asercja na liczbę dostępnych kursów
-    //czy mapa zawiera opis
     public Map<String, String> getAvailableCoursesData() {
         Map<String, String> availableCourses = new HashMap<>();
 
@@ -40,10 +38,5 @@ public class FakeLandingPage extends BasePage {
         });
 
         return availableCourses;
-    }
-
-    public String getPageTitleText(){
-        return driver.findElement(By.xpath("//div[contains(@class,'et_pb_module et_pb_text et_pb_text_0  et_pb_text_align_left et_pb_bg_layout_dark')]"))
-                .getText();
     }
 }

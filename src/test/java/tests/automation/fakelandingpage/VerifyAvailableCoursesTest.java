@@ -11,6 +11,8 @@ import org.openqa.selenium.By;
 import java.util.Map;
 
 public class VerifyAvailableCoursesTest extends TestCase {
+    protected int expectedNumberOfCourses = 8;
+    protected String expectedCourseDescription = "Duis egestas aliquet aliquet. Maecenas erat eros, fringilla et leo eget, viverra pretium nulla.";
 
     @Test
     public void verifyAvailableCoursesTest(){
@@ -28,9 +30,12 @@ public class VerifyAvailableCoursesTest extends TestCase {
                 driver.findElement(By.xpath("//div[contains(@class,'et_section_specialty')]"))
                         .isDisplayed());
 
-        Map<String, String> availableCourse = fakeLandingPage.getAvailableCoursesData();
+        Map<String, String> availableCourses = fakeLandingPage.getAvailableCoursesData();
 
         Assert.assertEquals("Incorrect number of available courses",
-                "", "");
+                expectedNumberOfCourses, availableCourses.size());
+
+        availableCourses.forEach((key, value) -> Assert.assertEquals("Incorrect description of available course",
+                expectedCourseDescription, value));
     }
 }
