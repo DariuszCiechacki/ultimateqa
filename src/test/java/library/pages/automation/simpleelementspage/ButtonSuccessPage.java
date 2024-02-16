@@ -12,7 +12,7 @@ public class ButtonSuccessPage extends BasePage {
     }
 
     public ButtonSuccessPage waitForPageContent(){
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//article[@id='post-4690']")));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h1[@class='entry-title']")));
 
         return this;
     }
