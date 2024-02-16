@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FillingOutFormsPage extends BasePage {
@@ -39,5 +40,9 @@ public class FillingOutFormsPage extends BasePage {
         form.findElement(By.xpath(".//button[@name='et_builder_submit_button']"));
 
         return this;
+    }
+
+    public List<String> getFieldsNamesWithError(int formNumber) {
+        return new FormsData(driver).getFieldsNamesWithError(formNumber);
     }
 }
