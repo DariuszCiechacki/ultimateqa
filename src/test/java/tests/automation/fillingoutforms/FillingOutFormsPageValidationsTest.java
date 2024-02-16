@@ -32,6 +32,7 @@ public class FillingOutFormsPageValidationsTest extends TestCase {
 
         fillingOutFormsPage.clickSubmitButton(1);
 
+        //ToFix
         try{Thread.sleep(3000);}
         catch (Exception e){}
 
@@ -45,6 +46,7 @@ public class FillingOutFormsPageValidationsTest extends TestCase {
 
         fillingOutFormsPage.clickSubmitButton(2);
 
+        //ToFix
         try{Thread.sleep(3000);}
         catch (Exception e){}
 
@@ -64,19 +66,18 @@ public class FillingOutFormsPageValidationsTest extends TestCase {
                 driver.findElement(By.xpath("//textarea[@name='et_pb_contact_message_1' and contains(@class, 'error')]"))
                 .isDisplayed());
 
-
         Assert.assertTrue("Captcha field is not marked as required",
                 driver.findElement(By.xpath("//input[contains(@name,'captcha_1') and contains(@class,'error')]"))
                         .isDisplayed());
 
         List<String> listOfRequiredFieldsForm2 = fillingOutFormsPage.getRequiredFieldsList(2);
         Assert.assertEquals("Name field is missing in required fields list",
-                "Name", listOfRequiredFieldsForm1.get(0));
+                "Name", listOfRequiredFieldsForm2.get(0));
 
         Assert.assertEquals("Message field is missing in required fields list",
-                "Message", listOfRequiredFieldsForm1.get(1));
+                "Message", listOfRequiredFieldsForm2.get(1));
 
         Assert.assertEquals("Captcha field is missing in required fields list",
-                "Captcha", listOfRequiredFieldsForm1.get(2));
+                "Captcha", listOfRequiredFieldsForm2.get(2));
     }
 }
