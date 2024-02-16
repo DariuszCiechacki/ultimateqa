@@ -1,6 +1,7 @@
 package library.pages.automation.simpleelementspage;
 
 import library.BasePage;
+import library.modules.automation.simplepage.TablesSectionData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,42 +31,10 @@ public class SimpleHtmlElementsPage extends BasePage {
     }
 
     public Map<String, Map<String, String>> getUniqueIdTableData(){
-        Map<String, Map<String, String>> uniqueIdTableData = new HashMap<>();
-
-        WebElement table = driver.findElement(By.id("htmlTableId"));
-        List<WebElement> rows = table.findElements(By.xpath(".//td//ancestor::tr"));
-
-        for (WebElement row : rows){
-            Map<String, String> rowDetails = new HashMap<>();
-
-            List<WebElement> columns = row.findElements(By.xpath(".//td"));
-
-            rowDetails.put("Salary", columns.get(2).getText());
-            rowDetails.put("Work", columns.get(1).getText());
-
-            uniqueIdTableData.put(columns.get(0).getText(), rowDetails);
-        }
-
-        return uniqueIdTableData;
+        return new TablesSectionData(driver).getUniqueIdTableData();
     }
 
     public Map<String, Map<String, String>> getNoIdTableData(){
-        Map<String, Map<String, String>> uniqueIdTableData = new HashMap<>();
-
-        WebElement table = driver.findElement(By.xpath("//table[not(@id='htmlTableId')]"));
-        List<WebElement> rows = table.findElements(By.xpath(".//td//ancestor::tr"));
-
-        for (WebElement row : rows){
-            Map<String, String> rowDetails = new HashMap<>();
-
-            List<WebElement> columns = row.findElements(By.xpath(".//td"));
-
-            rowDetails.put("Salary", columns.get(2).getText());
-            rowDetails.put("Work", columns.get(1).getText());
-
-            uniqueIdTableData.put(columns.get(0).getText(), rowDetails);
-        }
-
-        return uniqueIdTableData;
+        return new TablesSectionData(driver).getNoIdTableData();
     }
 }
