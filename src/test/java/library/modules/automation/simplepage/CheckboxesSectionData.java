@@ -7,4 +7,6 @@ public class CheckboxesSectionData extends BasePage {
     public CheckboxesSectionData(WebDriver driver) {
         super(driver);
     }
+
+
 }

@@ -37,4 +37,6 @@ public class SimpleHtmlElementsPage extends BasePage {
     public Map<String, Map<String, String>> getNoIdTableData(){
         return new TablesSectionData(driver).getNoIdTableData();
     }
+
+
 }
