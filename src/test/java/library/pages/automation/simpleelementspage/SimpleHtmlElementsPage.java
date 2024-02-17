@@ -1,6 +1,7 @@
 package library.pages.automation.simpleelementspage;
 
 import library.BasePage;
+import library.modules.automation.simplepage.CheckboxesSectionData;
 import library.modules.automation.simplepage.TablesSectionData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -38,5 +39,12 @@ public class SimpleHtmlElementsPage extends BasePage {
         return new TablesSectionData(driver).getNoIdTableData();
     }
 
+    public SimpleHtmlElementsPage fillCheckboxesSection(String radiobutton, String[] checkbox, boolean state, String selectValue){
+        new CheckboxesSectionData(driver)
+                .setRadiobutton(radiobutton)
+                .setCheckbox(checkbox, state)
+                .selectOption(selectValue);
 
+        return this;
+    }
 }
