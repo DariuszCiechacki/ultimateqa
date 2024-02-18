@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.HashMap;
 import java.util.List;
@@ -39,11 +40,28 @@ public class SimpleHtmlElementsPage extends BasePage {
         return new TablesSectionData(driver).getNoIdTableData();
     }
 
-    public SimpleHtmlElementsPage fillCheckboxesSection(String radiobutton, String[] checkbox, boolean state, String selectValue){
-        new CheckboxesSectionData(driver)
-                .setRadiobutton(radiobutton)
-                .setCheckbox(checkbox, state)
-                .selectOption(selectValue);
+    public SimpleHtmlElementsPage setCheckbox(String[] checkboxes, boolean state){
+        WebElement checkboxField = driver.findElement(By.xpath("//input[@name='vehicle' and @value='"+checkboxes+"']"));
+        boolean currentState = checkboxField.isSelected();
+
+        if(currentState != state){
+            checkboxField.click();
+        }
+
+        return this;
+    }
+
+    public SimpleHtmlElementsPage setRadiobutton(String radiobutton){
+        driver.findElement(By.xpath("//input[@name='gender' and @value='"+radiobutton+"']"))
+                .click();
+
+        return this;
+    }
+
+    public SimpleHtmlElementsPage selectOption(String value){
+        WebElement selectField = driver.findElement(By.xpath("//select"));
+        Select dropdown = new Select(selectField);
+        dropdown.selectByValue(value);
 
         return this;
     }
