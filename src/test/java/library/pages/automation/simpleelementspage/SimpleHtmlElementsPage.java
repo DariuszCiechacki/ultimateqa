@@ -40,14 +40,16 @@ public class SimpleHtmlElementsPage extends BasePage {
         return new TablesSectionData(driver).getNoIdTableData();
     }
 
-    public SimpleHtmlElementsPage setCheckbox(String[] checkboxes, boolean state){
-        WebElement checkboxField = driver.findElement(By.xpath("//input[@name='vehicle' and @value='"+checkboxes+"']"));
-        boolean currentState = checkboxField.isSelected();
+    public SimpleHtmlElementsPage setCheckbox(boolean state, String... checkboxes){
+        for (String checkbox : checkboxes){
+            WebElement checkboxField = driver.findElement(By.xpath("//input[@name='vehicle' and @value='"+checkbox+"']"));
+            boolean currentState = checkboxField.isSelected();
 
-        if(currentState != state){
-            checkboxField.click();
+            if(currentState != state){
+                checkboxField.click();
+            }
+
         }
-
         return this;
     }
 
