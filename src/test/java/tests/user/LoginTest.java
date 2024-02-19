@@ -1,5 +1,6 @@
 package tests.user;
 
+import com.ultimateqa.config.ConfigLoader;
 import library.TestCase;
 import library.pages.HomePage;
 import library.pages.courses.CollectionsPage;
@@ -17,7 +18,8 @@ public class LoginTest extends TestCase {
         loginPage.waitForPageContent();
 
         CollectionsPage collectionsPage = loginPage.login(
-                "dareck93@gmail.com", "Password#123");
+                ConfigLoader.getProperty("userEmail"),
+                ConfigLoader.getProperty("userPassword"));
         collectionsPage.waitForPageContent();
 
         Assert.assertTrue("User was not logged in successfully",
