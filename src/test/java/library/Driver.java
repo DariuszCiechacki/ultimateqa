@@ -5,7 +5,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public abstract class Driver {
+public class Driver {
     public static WebDriver driver = null;
-    protected WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 }

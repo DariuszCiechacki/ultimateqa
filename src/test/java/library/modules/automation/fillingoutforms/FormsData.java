@@ -6,7 +6,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,6 +67,6 @@ public class FormsData extends Driver {
         WebElement submitButton = form.findElement(By.xpath(".//button[@name='et_builder_submit_button']"));
         submitButton.click();
 
-        wait.until(ExpectedConditions.invisibilityOf(submitButton));
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.invisibilityOf(submitButton));
     }
 }

@@ -7,13 +7,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class FillingOutFormsPage extends Driver {
 
     public FillingOutFormsPage waitForPageContent() {
-        wait.until(ExpectedConditions.elementToBeClickable(
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//textarea[@name='et_pb_contact_message_0']")));
 
         return this;
