@@ -1,4 +1,4 @@
-package library.pages.users;
+package library.pages.user;
 
 import library.modules.automation.login.LoginInterface;
 import library.pages.courses.CollectionsPage;
@@ -15,7 +15,7 @@ public class LoginPage implements LoginInterface {
 
     public LoginPage waitForPageContent(){
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
-                By.xpath("")));
+                By.xpath("//input[@type='email']")));
 
         return this;
     }

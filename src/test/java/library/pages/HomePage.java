@@ -6,7 +6,7 @@ import library.pages.automation.FakeLandingPage;
 import library.pages.automation.FakePricingPage;
 import library.pages.automation.FillingOutFormsPage;
 import library.pages.automation.simpleelementspage.SimpleHtmlElementsPage;
-import library.pages.users.LoginPage;
+import library.pages.user.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -57,7 +57,7 @@ public class HomePage extends Driver {
     }
 
     public LoginPage navigateToLoginPage(){
-        driver.findElement(By.xpath("//a[contains(@href,'simple-html-elements-for-automation')]"))
+        driver.findElement(By.xpath("//a[contains(@href,'sign_in')]"))
                 .click();
 
         return new LoginPage();
