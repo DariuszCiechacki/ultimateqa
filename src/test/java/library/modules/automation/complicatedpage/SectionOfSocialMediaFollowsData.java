@@ -1,16 +1,14 @@
 package library.modules.automation.complicatedpage;
 
-import library.BasePage;
+import library.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class SectionOfSocialMediaFollowsData extends BasePage {
+public class SectionOfSocialMediaFollowsData extends Driver {
     public static String socialMediaButtonsSectionXpath = "//div[contains(@class,'et_pb_row et_pb_row_4')]";
 
     public SectionOfSocialMediaFollowsData(WebDriver driver) {

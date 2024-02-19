@@ -1,20 +1,16 @@
 package library.pages.automation;
 
-import library.BasePage;
+import library.Driver;
 import library.modules.automation.fillingoutforms.FormsData;
 import library.modules.automation.fillingoutforms.FormsDto;
-import library.services.CaptchaHandler;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 
-public class FillingOutFormsPage extends BasePage {
+public class FillingOutFormsPage extends Driver {
     public FillingOutFormsPage(WebDriver driver) {
         super(driver);
     }

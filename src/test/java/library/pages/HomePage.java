@@ -1,13 +1,13 @@
 package library.pages;
 
-import library.BasePage;
+import library.Driver;
 import library.pages.automation.*;
 import library.pages.automation.simpleelementspage.SimpleHtmlElementsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class HomePage extends BasePage {
+public class HomePage extends Driver {
     public HomePage(WebDriver driver) {
         super(driver);
     }

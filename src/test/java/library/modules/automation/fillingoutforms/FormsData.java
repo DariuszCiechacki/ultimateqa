@@ -1,6 +1,6 @@
 package library.modules.automation.fillingoutforms;
 
-import library.BasePage;
+import library.Driver;
 import library.services.CaptchaHandler;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FormsData extends BasePage {
+public class FormsData extends Driver {
     public FormsData(WebDriver driver) {
         super(driver);
     }

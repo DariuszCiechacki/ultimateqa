@@ -1,12 +1,9 @@
 package library.modules.automation.simplepage;
 
-import library.BasePage;
-import org.openqa.selenium.By;
+import library.Driver;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
-public class CheckboxesSectionData extends BasePage {
+public class CheckboxesSectionData extends Driver {
     public CheckboxesSectionData(WebDriver driver) {
         super(driver);
     }

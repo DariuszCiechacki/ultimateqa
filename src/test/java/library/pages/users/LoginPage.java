@@ -1,9 +1,9 @@
 package library.pages.users;
 
-import library.BasePage;
+import library.Driver;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage extends BasePage {
+public class LoginPage extends Driver {
     public LoginPage(WebDriver driver) {
         super(driver);
     }
