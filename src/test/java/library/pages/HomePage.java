@@ -6,6 +6,7 @@ import library.pages.automation.FakeLandingPage;
 import library.pages.automation.FakePricingPage;
 import library.pages.automation.FillingOutFormsPage;
 import library.pages.automation.simpleelementspage.SimpleHtmlElementsPage;
+import library.pages.users.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -53,5 +54,12 @@ public class HomePage extends Driver {
                 .click();
 
         return new SimpleHtmlElementsPage();
+    }
+
+    public LoginPage navigateToLoginPage(){
+        driver.findElement(By.xpath("//a[contains(@href,'simple-html-elements-for-automation')]"))
+                .click();
+
+        return new LoginPage();
     }
 }
