@@ -1,25 +1,20 @@
 package library.pages.automation.simpleelementspage;
 
-import library.BasePage;
-import library.modules.automation.simplepage.CheckboxesSectionData;
+import library.Driver;
 import library.modules.automation.simplepage.TablesSectionData;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.HashMap;
-import java.util.List;
+import java.time.Duration;
 import java.util.Map;
 
-public class SimpleHtmlElementsPage extends BasePage {
-    public SimpleHtmlElementsPage(WebDriver driver) {
-        super(driver);
-    }
+public class SimpleHtmlElementsPage extends Driver {
 
     public SimpleHtmlElementsPage waitForPageContent(){
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("idExample")));
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(By.id("idExample")));
 
         return this;
     }
@@ -29,15 +24,15 @@ public class SimpleHtmlElementsPage extends BasePage {
         driver.findElement(By.xpath(xPath))
                 .click();
 
-        return new ButtonSuccessPage(driver);
+        return new ButtonSuccessPage();
     }
 
     public Map<String, Map<String, String>> getUniqueIdTableData(){
-        return new TablesSectionData(driver).getUniqueIdTableData();
+        return new TablesSectionData().getUniqueIdTableData();
     }
 
     public Map<String, Map<String, String>> getNoIdTableData(){
-        return new TablesSectionData(driver).getNoIdTableData();
+        return new TablesSectionData().getNoIdTableData();
     }
 
     public SimpleHtmlElementsPage setCheckbox(boolean state, String... checkboxes){

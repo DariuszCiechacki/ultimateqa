@@ -1,33 +1,30 @@
 package library.modules.automation.fillingoutforms;
 
-import library.BasePage;
+import library.Driver;
 import library.services.CaptchaHandler;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FormsData extends BasePage {
-    public FormsData(WebDriver driver) {
-        super(driver);
-    }
-
+public class FormsData extends Driver {
     public FormsData fillForm(int formNumber, FormsDto formsDto) {
         int adjustedFormNumber = formNumber - 1;
         WebElement form = driver.findElement(
                 By.xpath("//div[@id='et_pb_contact_form_"+adjustedFormNumber+"']"));
 
-        new FormsData(driver)
+        new FormsData()
                 .enterName(form, formsDto.getName())
                 .enterMessage(form, formsDto.getMessage());
 
         try{
             WebElement captcha = form.findElement(By.xpath(".//input[contains(@name,'captcha')]"));
             if (captcha.isDisplayed()) {
-                new CaptchaHandler(driver).handleCaptcha(form);
+                new CaptchaHandler().handleCaptcha(form);
             }
         }
         catch (Exception e){}
@@ -69,6 +66,6 @@ public class FormsData extends BasePage {
         WebElement submitButton = form.findElement(By.xpath(".//button[@name='et_builder_submit_button']"));
         submitButton.click();
 
-        wait.until(ExpectedConditions.invisibilityOf(submitButton));
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.invisibilityOf(submitButton));
     }
 }

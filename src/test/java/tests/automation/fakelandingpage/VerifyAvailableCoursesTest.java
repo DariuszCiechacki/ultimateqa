@@ -1,6 +1,5 @@
 package tests.automation.fakelandingpage;
 
-import com.ultimateqa.config.ConfigLoader;
 import library.TestCase;
 import library.pages.HomePage;
 import library.pages.automation.FakeLandingPage;
@@ -10,15 +9,15 @@ import org.openqa.selenium.By;
 
 import java.util.Map;
 
+import static library.Driver.driver;
+
 public class VerifyAvailableCoursesTest extends TestCase {
     protected int expectedNumberOfCourses = 8;
     protected String expectedCourseDescription = "Duis egestas aliquet aliquet. Maecenas erat eros, fringilla et leo eget, viverra pretium nulla.";
 
     @Test
     public void verifyAvailableCoursesTest(){
-        driver.get(ConfigLoader.getProperty("baseUrl"));
-
-        HomePage homePage = new HomePage(driver).waitForPageContent();
+        HomePage homePage = new HomePage().waitForPageContent();
         Assert.assertTrue("Home page is not visible",
                 driver.findElement(By.id("Automation_Practice"))
                         .isDisplayed());

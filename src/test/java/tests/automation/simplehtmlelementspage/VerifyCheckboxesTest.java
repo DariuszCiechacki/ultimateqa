@@ -1,6 +1,5 @@
 package tests.automation.simplehtmlelementspage;
 
-import com.ultimateqa.config.ConfigLoader;
 import library.TestCase;
 import library.pages.HomePage;
 import library.pages.automation.simpleelementspage.SimpleHtmlElementsPage;
@@ -8,12 +7,12 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
+import static library.Driver.driver;
+
 public class VerifyCheckboxesTest extends TestCase {
     @Test
     public void verifyCheckboxesTest() {
-        driver.get(ConfigLoader.getProperty("baseUrl"));
-
-        HomePage homePage = new HomePage(driver).waitForPageContent();
+        HomePage homePage = new HomePage().waitForPageContent();
 
         Assert.assertTrue("Home page is not visible",
                 driver.findElement(By.id("Automation_Practice"))

@@ -1,8 +1,6 @@
 package tests.automation.fillingoutforms;
 
-import com.ultimateqa.config.ConfigLoader;
 import library.TestCase;
-import library.modules.automation.fillingoutforms.FormsFactory;
 import library.pages.HomePage;
 import library.pages.automation.FillingOutFormsPage;
 import org.junit.Assert;
@@ -11,13 +9,13 @@ import org.openqa.selenium.By;
 
 import java.util.List;
 
+import static library.Driver.driver;
+
 public class FillingOutFormsPageValidationsTest extends TestCase {
 
     @Test
     public void fillingOutFormsPageValidationsTest(){
-        driver.get(ConfigLoader.getProperty("baseUrl"));
-
-        HomePage homePage = new HomePage(driver).waitForPageContent();
+        HomePage homePage = new HomePage().waitForPageContent();
 
         Assert.assertTrue("Home page is not visible",
                 driver.findElement(By.id("Automation_Practice"))

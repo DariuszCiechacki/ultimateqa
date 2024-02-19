@@ -1,12 +1,8 @@
 package library.pages.automation;
 
-import library.BasePage;
-import org.openqa.selenium.WebDriver;
+import library.Driver;
 
-public class FakePricingPage extends BasePage {
-    public FakePricingPage(WebDriver driver) {
-        super(driver);
-    }
+public class FakePricingPage extends Driver {
 
     public FakePricingPage waitForPageContent(){
 

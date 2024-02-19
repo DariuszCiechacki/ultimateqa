@@ -1,18 +1,16 @@
 package library.pages.automation.simpleelementspage;
 
-import library.BasePage;
+import library.Driver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ButtonSuccessPage extends BasePage {
+import java.time.Duration;
 
-    public ButtonSuccessPage(WebDriver driver) {
-        super(driver);
-    }
+public class ButtonSuccessPage extends Driver {
 
     public ButtonSuccessPage waitForPageContent(){
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h1[@class='entry-title']")));
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(By.xpath("//h1[@class='entry-title']")));
 
         return this;
     }

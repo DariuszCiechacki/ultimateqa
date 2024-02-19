@@ -1,19 +1,20 @@
 package library.pages;
 
-import library.BasePage;
-import library.pages.automation.*;
+import library.Driver;
+import library.pages.automation.ComplicatedPage;
+import library.pages.automation.FakeLandingPage;
+import library.pages.automation.FakePricingPage;
+import library.pages.automation.FillingOutFormsPage;
 import library.pages.automation.simpleelementspage.SimpleHtmlElementsPage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HomePage extends BasePage {
-    public HomePage(WebDriver driver) {
-        super(driver);
-    }
+import java.time.Duration;
 
+public class HomePage extends Driver {
     public HomePage waitForPageContent(){
-        wait.until(ExpectedConditions.elementToBeClickable(
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//span[@id='Automation_Practice']")));
 
         return this;
@@ -23,34 +24,34 @@ public class HomePage extends BasePage {
         driver.findElement(By.xpath("//a[contains(@href,'complicated-page')]"))
                 .click();
 
-        return new ComplicatedPage(driver);
+        return new ComplicatedPage();
     }
 
     public FakeLandingPage navigateToFakeLandingPage(){
         driver.findElement(By.xpath("//a[contains(@href,'fake-landing-page')]"))
                 .click();
 
-        return new FakeLandingPage(driver);
+        return new FakeLandingPage();
     }
 
     public FakePricingPage navigateToFakePricingPage(){
         driver.findElement(By.xpath("//a[contains(@href,'fake-pricing-page')]"))
                 .click();
 
-        return new FakePricingPage(driver);
+        return new FakePricingPage();
     }
 
     public FillingOutFormsPage navigateToFillingOutFormsPage(){
         driver.findElement(By.xpath("//a[contains(@href,'filling-out-forms')]"))
                 .click();
 
-        return new FillingOutFormsPage(driver);
+        return new FillingOutFormsPage();
     }
 
     public SimpleHtmlElementsPage navigateSimpleHtmlElementsPage(){
         driver.findElement(By.xpath("//a[contains(@href,'simple-html-elements-for-automation')]"))
                 .click();
 
-        return new SimpleHtmlElementsPage(driver);
+        return new SimpleHtmlElementsPage();
     }
 }

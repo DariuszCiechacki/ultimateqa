@@ -1,15 +1,10 @@
 package library.services;
 
-import library.BasePage;
+import library.Driver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class CaptchaHandler extends BasePage {
-
-    public CaptchaHandler(WebDriver driver) {
-        super(driver);
-    }
+public class CaptchaHandler extends Driver {
 
     public void handleCaptcha(WebElement captchaContainer){
         WebElement captchaInput = captchaContainer.findElement(

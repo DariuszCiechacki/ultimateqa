@@ -1,6 +1,5 @@
 package tests.automation.complicatedpage;
 
-import com.ultimateqa.config.ConfigLoader;
 import library.TestCase;
 import library.pages.HomePage;
 import library.pages.automation.ComplicatedPage;
@@ -10,6 +9,8 @@ import org.openqa.selenium.By;
 
 import java.util.List;
 
+import static library.Driver.driver;
+
 public class VerifySocialMediaButtonsLinkTest extends TestCase {
     protected int expectedSocialMediaLinksNumber = 5;
     protected String expectedTwitterLink = "https://twitter.com/Nikolay_A00";
@@ -17,9 +18,7 @@ public class VerifySocialMediaButtonsLinkTest extends TestCase {
 
     @Test
     public void verifyNumberOfButtonsTest() {
-        driver.get(ConfigLoader.getProperty("baseUrl"));
-
-        HomePage homePage = new HomePage(driver).waitForPageContent();
+        HomePage homePage = new HomePage().waitForPageContent();
 
         Assert.assertTrue("Home page is not visible",
                 driver.findElement(By.id("Automation_Practice"))

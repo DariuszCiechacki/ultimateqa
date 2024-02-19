@@ -1,33 +1,27 @@
 package library.pages.automation;
 
-import library.BasePage;
+import library.Driver;
 import library.modules.automation.fillingoutforms.FormsData;
 import library.modules.automation.fillingoutforms.FormsDto;
-import library.services.CaptchaHandler;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 
-public class FillingOutFormsPage extends BasePage {
-    public FillingOutFormsPage(WebDriver driver) {
-        super(driver);
-    }
+public class FillingOutFormsPage extends Driver {
 
     public FillingOutFormsPage waitForPageContent() {
-        wait.until(ExpectedConditions.elementToBeClickable(
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//textarea[@name='et_pb_contact_message_0']")));
 
         return this;
     }
 
     public FillingOutFormsPage fillForm(int formNumber, FormsDto formsDto) {
-        new FormsData(driver).fillForm(formNumber, formsDto);
+        new FormsData().fillForm(formNumber, formsDto);
 
         return this;
     }
@@ -44,6 +38,6 @@ public class FillingOutFormsPage extends BasePage {
     }
 
     public List<String> getRequiredFieldsList(int formNumber) {
-        return new FormsData(driver).getRequiredFieldsList(formNumber);
+        return new FormsData().getRequiredFieldsList(formNumber);
     }
 }

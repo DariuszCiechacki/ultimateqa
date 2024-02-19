@@ -1,40 +1,35 @@
 package library.pages.automation;
 
-import library.BasePage;
+import library.Driver;
 import library.modules.automation.complicatedpage.SectionOfButtonsData;
 import library.modules.automation.complicatedpage.SectionOfSocialMediaFollowsData;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
-import java.util.Map;
 
-public class ComplicatedPage extends BasePage {
-    public ComplicatedPage(WebDriver driver) {
-        super(driver);
-    }
+public class ComplicatedPage extends Driver {
 
     public ComplicatedPage waitForPageContent(){
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("Skills_Improved")));
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(By.id("Skills_Improved")));
 
         return this;
     }
 
     //Section of buttons
     public int countButtonsInSectionOfButtons(){
-        return new SectionOfButtonsData(driver).countButtonsInSectionOfButtons();
+        return new SectionOfButtonsData().countButtonsInSectionOfButtons();
     }
 
     public List<String> getButtonsText(){
-        return new SectionOfButtonsData(driver).getButtonsText();
+        return new SectionOfButtonsData().getButtonsText();
     }
 
     //section of social media follows
     public List<String> getSocialMediaNavigationLinks(String socialMedia){
-        return new SectionOfSocialMediaFollowsData(driver)
+        return new SectionOfSocialMediaFollowsData()
                 .getSocialMediaNavigationLinks(socialMedia);
     }
 
@@ -49,7 +44,7 @@ public class ComplicatedPage extends BasePage {
         driver.findElement(By.xpath("//span[@id='A_toggle']"))
                 .click();
 
-        wait.until(ExpectedConditions.elementToBeClickable(
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//div[contains(@class,'et_pb_toggle_content clearfix') and contains(@style,'display: block')]")));
 
     }
