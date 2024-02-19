@@ -25,7 +25,7 @@ public class VerifyDropdownTest extends TestCase {
                 driver.findElement(By.id("idExample"))
                         .isDisplayed());
 
-        simpleHtmlElementsPage.selectOption("saab");
+        simpleHtmlElementsPage.selectDropdownOption("saab");
 
         Assert.assertEquals("Incorrect dropdown selection",
                 "Saab", driver.findElement(By.xpath("//select")).getText());

@@ -10,7 +10,8 @@ import java.time.Duration;
 public class ButtonSuccessPage extends Driver {
 
     public ButtonSuccessPage waitForPageContent(){
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(By.xpath("//h1[@class='entry-title']")));
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//h1[@class='entry-title']")));
 
         return this;
     }

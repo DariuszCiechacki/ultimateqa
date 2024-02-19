@@ -13,7 +13,8 @@ import java.util.List;
 public class ComplicatedPage extends Driver {
 
     public ComplicatedPage waitForPageContent(){
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(By.id("Skills_Improved")));
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
+                By.id("Skills_Improved")));
 
         return this;
     }

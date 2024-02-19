@@ -14,17 +14,10 @@ import java.util.Map;
 public class SimpleHtmlElementsPage extends Driver {
 
     public SimpleHtmlElementsPage waitForPageContent(){
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(By.id("idExample")));
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
+                By.id("idExample")));
 
         return this;
-    }
-
-    public ButtonSuccessPage navigateToButtonSuccessPage(String xPath){
-
-        driver.findElement(By.xpath(xPath))
-                .click();
-
-        return new ButtonSuccessPage();
     }
 
     public Map<String, Map<String, String>> getUniqueIdTableData(){
@@ -35,31 +28,34 @@ public class SimpleHtmlElementsPage extends Driver {
         return new TablesSectionData().getNoIdTableData();
     }
 
-    public SimpleHtmlElementsPage setCheckbox(boolean state, String... checkboxes){
+    public void setCheckbox(boolean desiredState, String... checkboxes){
         for (String checkbox : checkboxes){
-            WebElement checkboxField = driver.findElement(By.xpath("//input[@name='vehicle' and @value='"+checkbox+"']"));
+            WebElement checkboxField = driver.findElement(
+                    By.xpath("//input[@name='vehicle' and @value='"+checkbox+"']"));
+
             boolean currentState = checkboxField.isSelected();
 
-            if(currentState != state){
+            if(currentState != desiredState){
                 checkboxField.click();
             }
-
         }
-        return this;
     }
 
-    public SimpleHtmlElementsPage setRadiobutton(String radiobutton){
+    public void setRadiobutton(String radiobutton){
         driver.findElement(By.xpath("//input[@name='gender' and @value='"+radiobutton+"']"))
                 .click();
-
-        return this;
     }
 
-    public SimpleHtmlElementsPage selectOption(String value){
-        WebElement selectField = driver.findElement(By.xpath("//select"));
-        Select dropdown = new Select(selectField);
-        dropdown.selectByValue(value);
+    public void selectDropdownOption(String value){
+        WebElement selectElement = driver.findElement(By.xpath("//select"));
+        Select select = new Select(selectElement);
+        select.selectByValue(value);
+    }
 
-        return this;
+    public ButtonSuccessPage navigateToButtonSuccessPage(String xPath){
+        driver.findElement(By.xpath(xPath))
+                .click();
+
+        return new ButtonSuccessPage();
     }
 }
