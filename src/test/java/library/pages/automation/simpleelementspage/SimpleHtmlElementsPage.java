@@ -1,10 +1,13 @@
 package library.pages.automation.simpleelementspage;
 
 import library.BasePage;
+import library.modules.automation.simplepage.CheckboxesSectionData;
+import library.modules.automation.simplepage.TablesSectionData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.HashMap;
 import java.util.List;
@@ -30,42 +33,38 @@ public class SimpleHtmlElementsPage extends BasePage {
     }
 
     public Map<String, Map<String, String>> getUniqueIdTableData(){
-        Map<String, Map<String, String>> uniqueIdTableData = new HashMap<>();
-
-        WebElement table = driver.findElement(By.id("htmlTableId"));
-        List<WebElement> rows = table.findElements(By.xpath(".//td//ancestor::tr"));
-
-        for (WebElement row : rows){
-            Map<String, String> rowDetails = new HashMap<>();
-
-            List<WebElement> columns = row.findElements(By.xpath(".//td"));
-
-            rowDetails.put("Salary", columns.get(2).getText());
-            rowDetails.put("Work", columns.get(1).getText());
-
-            uniqueIdTableData.put(columns.get(0).getText(), rowDetails);
-        }
-
-        return uniqueIdTableData;
+        return new TablesSectionData(driver).getUniqueIdTableData();
     }
 
     public Map<String, Map<String, String>> getNoIdTableData(){
-        Map<String, Map<String, String>> uniqueIdTableData = new HashMap<>();
+        return new TablesSectionData(driver).getNoIdTableData();
+    }
 
-        WebElement table = driver.findElement(By.xpath("//table[not(@id='htmlTableId')]"));
-        List<WebElement> rows = table.findElements(By.xpath(".//td//ancestor::tr"));
+    public SimpleHtmlElementsPage setCheckbox(boolean state, String... checkboxes){
+        for (String checkbox : checkboxes){
+            WebElement checkboxField = driver.findElement(By.xpath("//input[@name='vehicle' and @value='"+checkbox+"']"));
+            boolean currentState = checkboxField.isSelected();
 
-        for (WebElement row : rows){
-            Map<String, String> rowDetails = new HashMap<>();
+            if(currentState != state){
+                checkboxField.click();
+            }
 
-            List<WebElement> columns = row.findElements(By.xpath(".//td"));
-
-            rowDetails.put("Salary", columns.get(2).getText());
-            rowDetails.put("Work", columns.get(1).getText());
-
-            uniqueIdTableData.put(columns.get(0).getText(), rowDetails);
         }
+        return this;
+    }
 
-        return uniqueIdTableData;
+    public SimpleHtmlElementsPage setRadiobutton(String radiobutton){
+        driver.findElement(By.xpath("//input[@name='gender' and @value='"+radiobutton+"']"))
+                .click();
+
+        return this;
+    }
+
+    public SimpleHtmlElementsPage selectOption(String value){
+        WebElement selectField = driver.findElement(By.xpath("//select"));
+        Select dropdown = new Select(selectField);
+        dropdown.selectByValue(value);
+
+        return this;
     }
 }
