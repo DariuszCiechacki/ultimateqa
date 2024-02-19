@@ -12,4 +12,8 @@ public class PersonalData {
         this.age = age;
         this.nationality = nationality;
     }
+
+    public void hobby(){
+        System.out.println(firstName + " " + lastName + " loves cocaine");
+    }
 }

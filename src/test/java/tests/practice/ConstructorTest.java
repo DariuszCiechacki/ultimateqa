@@ -10,5 +10,6 @@ public class ConstructorTest {
                 "Lisandro", "Martinez", 26, "Argentina", "Manchester United");
 
         footballPlayers.displayMessage();
+        footballPlayers.hobby();
     }
 }

@@ -12,6 +12,11 @@ public class FootballPlayers extends PersonalData{
         System.out.println(firstName + " " + lastName + " plays for " + footballClub + displayStadiumName());
     }
 
+    //Overwriting method
+    public void hobby(){
+        System.out.println(firstName + " " + lastName + " loves going to the gym");
+    }
+
     private String displayStadiumName(){
         if (footballClub.equals("Manchester United")){
             return " at the Old Trafford Stadium";
