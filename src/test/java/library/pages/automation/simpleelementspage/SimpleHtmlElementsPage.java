@@ -11,9 +11,6 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.Map;
 
 public class SimpleHtmlElementsPage extends Driver {
-    public SimpleHtmlElementsPage(WebDriver driver) {
-        super(driver);
-    }
 
     public SimpleHtmlElementsPage waitForPageContent(){
         wait.until(ExpectedConditions.elementToBeClickable(By.id("idExample")));
@@ -26,15 +23,15 @@ public class SimpleHtmlElementsPage extends Driver {
         driver.findElement(By.xpath(xPath))
                 .click();
 
-        return new ButtonSuccessPage(driver);
+        return new ButtonSuccessPage();
     }
 
     public Map<String, Map<String, String>> getUniqueIdTableData(){
-        return new TablesSectionData(driver).getUniqueIdTableData();
+        return new TablesSectionData().getUniqueIdTableData();
     }
 
     public Map<String, Map<String, String>> getNoIdTableData(){
-        return new TablesSectionData(driver).getNoIdTableData();
+        return new TablesSectionData().getNoIdTableData();
     }
 
     public SimpleHtmlElementsPage setCheckbox(boolean state, String... checkboxes){

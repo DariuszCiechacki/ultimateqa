@@ -10,9 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 public class TablesSectionData extends Driver {
-    public TablesSectionData(WebDriver driver) {
-        super(driver);
-    }
 
     public Map<String, Map<String, String>> getUniqueIdTableData(){
         Map<String, Map<String, String>> uniqueIdTableData = new HashMap<>();

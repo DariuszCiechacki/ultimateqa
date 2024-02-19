@@ -11,10 +11,6 @@ import java.util.List;
 public class SectionOfSocialMediaFollowsData extends Driver {
     public static String socialMediaButtonsSectionXpath = "//div[contains(@class,'et_pb_row et_pb_row_4')]";
 
-    public SectionOfSocialMediaFollowsData(WebDriver driver) {
-        super(driver);
-    }
-
     public List<String> getSocialMediaNavigationLinks(String socialMedia){
         List<WebElement> socialMediaButtons = driver.findElements(By.xpath(
                 socialMediaButtonsSectionXpath + "//li[contains(@class,'et-social-"+socialMedia+"')]//a"));

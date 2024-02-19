@@ -11,9 +11,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 
 public class FillingOutFormsPage extends Driver {
-    public FillingOutFormsPage(WebDriver driver) {
-        super(driver);
-    }
 
     public FillingOutFormsPage waitForPageContent() {
         wait.until(ExpectedConditions.elementToBeClickable(
@@ -23,7 +20,7 @@ public class FillingOutFormsPage extends Driver {
     }
 
     public FillingOutFormsPage fillForm(int formNumber, FormsDto formsDto) {
-        new FormsData(driver).fillForm(formNumber, formsDto);
+        new FormsData().fillForm(formNumber, formsDto);
 
         return this;
     }
@@ -40,6 +37,6 @@ public class FillingOutFormsPage extends Driver {
     }
 
     public List<String> getRequiredFieldsList(int formNumber) {
-        return new FormsData(driver).getRequiredFieldsList(formNumber);
+        return new FormsData().getRequiredFieldsList(formNumber);
     }
 }

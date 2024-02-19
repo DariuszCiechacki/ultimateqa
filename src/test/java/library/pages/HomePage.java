@@ -8,10 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends Driver {
-    public HomePage(WebDriver driver) {
-        super(driver);
-    }
-
     public HomePage waitForPageContent(){
         wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//span[@id='Automation_Practice']")));
@@ -23,34 +19,34 @@ public class HomePage extends Driver {
         driver.findElement(By.xpath("//a[contains(@href,'complicated-page')]"))
                 .click();
 
-        return new ComplicatedPage(driver);
+        return new ComplicatedPage();
     }
 
     public FakeLandingPage navigateToFakeLandingPage(){
         driver.findElement(By.xpath("//a[contains(@href,'fake-landing-page')]"))
                 .click();
 
-        return new FakeLandingPage(driver);
+        return new FakeLandingPage();
     }
 
     public FakePricingPage navigateToFakePricingPage(){
         driver.findElement(By.xpath("//a[contains(@href,'fake-pricing-page')]"))
                 .click();
 
-        return new FakePricingPage(driver);
+        return new FakePricingPage();
     }
 
     public FillingOutFormsPage navigateToFillingOutFormsPage(){
         driver.findElement(By.xpath("//a[contains(@href,'filling-out-forms')]"))
                 .click();
 
-        return new FillingOutFormsPage(driver);
+        return new FillingOutFormsPage();
     }
 
     public SimpleHtmlElementsPage navigateSimpleHtmlElementsPage(){
         driver.findElement(By.xpath("//a[contains(@href,'simple-html-elements-for-automation')]"))
                 .click();
 
-        return new SimpleHtmlElementsPage(driver);
+        return new SimpleHtmlElementsPage();
     }
 }

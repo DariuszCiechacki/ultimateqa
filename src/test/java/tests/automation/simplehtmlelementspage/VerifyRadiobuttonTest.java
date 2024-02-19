@@ -8,12 +8,13 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
+import static library.Driver.driver;
+
 public class VerifyRadiobuttonTest extends TestCase {
+
     @Test
     public void verifyRadiobuttonTest() {
-        driver.get(ConfigLoader.getProperty("baseUrl"));
-
-        HomePage homePage = new HomePage(driver).waitForPageContent();
+        HomePage homePage = new HomePage().waitForPageContent();
 
         Assert.assertTrue("Home page is not visible",
                 driver.findElement(By.id("Automation_Practice"))

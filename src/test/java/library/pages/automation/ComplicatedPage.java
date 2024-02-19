@@ -10,9 +10,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 
 public class ComplicatedPage extends Driver {
-    public ComplicatedPage(WebDriver driver) {
-        super(driver);
-    }
 
     public ComplicatedPage waitForPageContent(){
         wait.until(ExpectedConditions.elementToBeClickable(By.id("Skills_Improved")));
@@ -22,16 +19,16 @@ public class ComplicatedPage extends Driver {
 
     //Section of buttons
     public int countButtonsInSectionOfButtons(){
-        return new SectionOfButtonsData(driver).countButtonsInSectionOfButtons();
+        return new SectionOfButtonsData().countButtonsInSectionOfButtons();
     }
 
     public List<String> getButtonsText(){
-        return new SectionOfButtonsData(driver).getButtonsText();
+        return new SectionOfButtonsData().getButtonsText();
     }
 
     //section of social media follows
     public List<String> getSocialMediaNavigationLinks(String socialMedia){
-        return new SectionOfSocialMediaFollowsData(driver)
+        return new SectionOfSocialMediaFollowsData()
                 .getSocialMediaNavigationLinks(socialMedia);
     }
 

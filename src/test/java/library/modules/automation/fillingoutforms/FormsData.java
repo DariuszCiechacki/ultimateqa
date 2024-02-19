@@ -11,23 +11,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FormsData extends Driver {
-    public FormsData(WebDriver driver) {
-        super(driver);
-    }
-
     public FormsData fillForm(int formNumber, FormsDto formsDto) {
         int adjustedFormNumber = formNumber - 1;
         WebElement form = driver.findElement(
                 By.xpath("//div[@id='et_pb_contact_form_"+adjustedFormNumber+"']"));
 
-        new FormsData(driver)
+        new FormsData()
                 .enterName(form, formsDto.getName())
                 .enterMessage(form, formsDto.getMessage());
 
         try{
             WebElement captcha = form.findElement(By.xpath(".//input[contains(@name,'captcha')]"));
             if (captcha.isDisplayed()) {
-                new CaptchaHandler(driver).handleCaptcha(form);
+                new CaptchaHandler().handleCaptcha(form);
             }
         }
         catch (Exception e){}

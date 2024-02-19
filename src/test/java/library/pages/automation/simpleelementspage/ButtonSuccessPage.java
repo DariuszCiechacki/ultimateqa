@@ -7,10 +7,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ButtonSuccessPage extends Driver {
 
-    public ButtonSuccessPage(WebDriver driver) {
-        super(driver);
-    }
-
     public ButtonSuccessPage waitForPageContent(){
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h1[@class='entry-title']")));
 

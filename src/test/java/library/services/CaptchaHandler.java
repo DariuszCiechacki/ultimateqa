@@ -7,10 +7,6 @@ import org.openqa.selenium.WebElement;
 
 public class CaptchaHandler extends Driver {
 
-    public CaptchaHandler(WebDriver driver) {
-        super(driver);
-    }
-
     public void handleCaptcha(WebElement captchaContainer){
         WebElement captchaInput = captchaContainer.findElement(
                 By.xpath(".//input[contains(@name,'et_pb_contact_captcha')]"));
