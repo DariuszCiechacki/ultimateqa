@@ -3,8 +3,8 @@ package library.modules.practice.constructor;
 public class FootballPlayers extends PersonalData{
     public String footballClub;
 
-    public FootballPlayers(String firstName, String lastName, int age, String nationality, String footballClub) {
-        super(firstName, lastName, age, nationality);
+    public FootballPlayers(String firstName, String lastName, int age, String footballClub) {
+        super(firstName, lastName, age);
         this.footballClub = footballClub;
     }
 
@@ -22,5 +22,13 @@ public class FootballPlayers extends PersonalData{
             return " at the Old Trafford Stadium";
         }
         return "";
+    }
+
+    public void appearances(int club, int national){
+        System.out.println(club + national + " total games this season");
+    }
+
+    public void appearances(int club, int national, int friendlies){
+        System.out.println(club + national + friendlies + " total games this season");
     }
 }
