@@ -1,6 +1,5 @@
 package tests.automation.complicatedpage;
 
-import com.ultimateqa.config.ConfigLoader;
 import library.TestCase;
 import library.pages.HomePage;
 import library.pages.automation.ComplicatedPage;

@@ -1,10 +1,12 @@
 package library.pages;
 
 import library.Driver;
-import library.pages.automation.*;
+import library.pages.automation.ComplicatedPage;
+import library.pages.automation.FakeLandingPage;
+import library.pages.automation.FakePricingPage;
+import library.pages.automation.FillingOutFormsPage;
 import library.pages.automation.simpleelementspage.SimpleHtmlElementsPage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 

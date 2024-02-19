@@ -1,6 +1,5 @@
 package tests.automation.simplehtmlelementspage;
 
-import com.ultimateqa.config.ConfigLoader;
 import library.TestCase;
 import library.pages.HomePage;
 import library.pages.automation.simpleelementspage.ButtonSuccessPage;

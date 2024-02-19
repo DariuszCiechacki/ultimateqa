@@ -1,7 +1,6 @@
 package library.pages.users;
 
 import library.Driver;
-import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends Driver {
 

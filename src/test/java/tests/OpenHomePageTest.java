@@ -1,6 +1,5 @@
 package tests;
 
-import com.ultimateqa.config.ConfigLoader;
 import library.TestCase;
 import library.pages.HomePage;
 import org.junit.Assert;

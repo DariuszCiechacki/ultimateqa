@@ -2,7 +2,6 @@ package library.modules.automation.complicatedpage;
 
 import library.Driver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;

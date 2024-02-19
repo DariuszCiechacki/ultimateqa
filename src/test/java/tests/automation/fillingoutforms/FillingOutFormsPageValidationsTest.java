@@ -1,8 +1,6 @@
 package tests.automation.fillingoutforms;
 
-import com.ultimateqa.config.ConfigLoader;
 import library.TestCase;
-import library.modules.automation.fillingoutforms.FormsFactory;
 import library.pages.HomePage;
 import library.pages.automation.FillingOutFormsPage;
 import org.junit.Assert;
