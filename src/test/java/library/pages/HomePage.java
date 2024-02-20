@@ -4,7 +4,7 @@ import library.pages.automation.ComplicatedPage;
 import library.pages.automation.FakeLandingPage;
 import library.pages.automation.FakePricingPage;
 import library.pages.automation.FillingOutFormsPage;
-import library.pages.automation.simpleelementspage.SimpleHtmlElementsPage;
+import library.pages.automation.simpleelementspage.SimpleElementsPage;
 import library.pages.user.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,9 +15,11 @@ import java.time.Duration;
 import static library.Driver.driver;
 
 public class HomePage {
-    public HomePage waitForPageContent(){
+    public static final String homePageTitle = "//span[@id='Automation_Practice']";
+
+    public HomePage waitForHomePageContent(){
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//span[@id='Automation_Practice']")));
+                By.xpath(homePageTitle)));
 
         return this;
     }
@@ -50,11 +52,11 @@ public class HomePage {
         return new FillingOutFormsPage();
     }
 
-    public SimpleHtmlElementsPage navigateSimpleHtmlElementsPage(){
+    public SimpleElementsPage navigateSimpleHtmlElementsPage(){
         driver.findElement(By.xpath("//a[contains(@href,'simple-html-elements-for-automation')]"))
                 .click();
 
-        return new SimpleHtmlElementsPage();
+        return new SimpleElementsPage();
     }
 
     public LoginPage navigateToLoginPage(){

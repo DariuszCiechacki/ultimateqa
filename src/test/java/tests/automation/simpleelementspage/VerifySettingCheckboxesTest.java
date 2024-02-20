@@ -1,28 +1,30 @@
-package tests.automation.simplehtmlelementspage;
+package tests.automation.simpleelementspage;
 
 import library.TestCase;
 import library.pages.HomePage;
-import library.pages.automation.simpleelementspage.SimpleHtmlElementsPage;
+import library.pages.automation.simpleelementspage.SimpleElementsPage;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
 import static library.Driver.driver;
+import static library.pages.HomePage.homePageTitle;
+import static library.pages.automation.simpleelementspage.SimpleElementsPage.simpleElementsPageTitle;
 
-public class VerifyCheckboxesTest extends TestCase {
+public class VerifySettingCheckboxesTest extends TestCase {
+
     @Test
-    public void verifyCheckboxesTest() {
-        HomePage homePage = new HomePage().waitForPageContent();
-
+    public void verifySettingCheckboxesTest() {
+        HomePage homePage = new HomePage().waitForHomePageContent();
         Assert.assertTrue("Home page is not visible",
-                driver.findElement(By.id("Automation_Practice"))
+                driver.findElement(By.xpath(homePageTitle))
                         .isDisplayed());
 
-        SimpleHtmlElementsPage simpleHtmlElementsPage = homePage.navigateSimpleHtmlElementsPage();
-        simpleHtmlElementsPage.waitForPageContent();
+        SimpleElementsPage simpleHtmlElementsPage = homePage.navigateSimpleHtmlElementsPage();
 
+        simpleHtmlElementsPage.waitForSimpleElementsPageContent();
         Assert.assertTrue("Simple html elements page is not visible",
-                driver.findElement(By.id("idExample"))
+                driver.findElement(By.xpath(simpleElementsPageTitle))
                         .isDisplayed());
 
         simpleHtmlElementsPage.setCheckbox(true, "Bike");

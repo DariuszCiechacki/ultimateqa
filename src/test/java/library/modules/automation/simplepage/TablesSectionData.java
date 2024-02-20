@@ -10,7 +10,7 @@ import java.util.Map;
 import static library.Driver.driver;
 
 public class TablesSectionData {
-
+    //ToDo refactor getting tables data, create one method with parameter and apply stream
     public Map<String, Map<String, String>> getUniqueIdTableData(){
         Map<String, Map<String, String>> uniqueIdTableData = new HashMap<>();
 
