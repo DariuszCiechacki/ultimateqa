@@ -5,14 +5,16 @@ import library.pages.automation.ComplicatedPage;
 import library.pages.automation.FakeLandingPage;
 import library.pages.automation.FakePricingPage;
 import library.pages.automation.FillingOutFormsPage;
-import library.pages.automation.simpleelementspage.SimpleHtmlElementsPage;
+import library.pages.automation.simpleelementspage.SimpleElementsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class HomePage extends Driver {
+import static library.Driver.driver;
+
+public class HomePage {
     public static final String homePageTitle = "//span[@id='Automation_Practice']";
 
     public HomePage waitForHomePageContent(){
@@ -50,10 +52,10 @@ public class HomePage extends Driver {
         return new FillingOutFormsPage();
     }
 
-    public SimpleHtmlElementsPage navigateSimpleHtmlElementsPage(){
+    public SimpleElementsPage navigateSimpleHtmlElementsPage(){
         driver.findElement(By.xpath("//a[contains(@href,'simple-html-elements-for-automation')]"))
                 .click();
 
-        return new SimpleHtmlElementsPage();
+        return new SimpleElementsPage();
     }
 }

@@ -1,6 +1,5 @@
 package library.pages.automation.simpleelementspage;
 
-import library.Driver;
 import library.modules.automation.simplepage.TablesSectionData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -9,13 +8,17 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.Map;
 
-public class SimpleHtmlElementsPage extends Driver {
+import static library.Driver.driver;
 
-    public SimpleHtmlElementsPage waitForPageContent(){
+public class SimpleElementsPage {
+    public static final String simpleElementsPageTitle = "//div[@id='idExample']";
+
+    public SimpleElementsPage waitForSimpleElementsPageContent(){
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
-                By.id("idExample")));
+                By.xpath(simpleElementsPageTitle)));
 
         return this;
     }
@@ -28,17 +31,15 @@ public class SimpleHtmlElementsPage extends Driver {
         return new TablesSectionData().getNoIdTableData();
     }
 
-    public void setCheckbox(boolean desiredState, String... checkboxes){
-        for (String checkbox : checkboxes){
+    public void setCheckbox(boolean desiredState, String... checkboxes) {
+        Arrays.stream(checkboxes).forEach(checkbox -> {
             WebElement checkboxField = driver.findElement(
-                    By.xpath("//input[@name='vehicle' and @value='"+checkbox+"']"));
+                    By.xpath("//input[@name='vehicle' and @value='" + checkbox + "']"));
 
-            boolean currentState = checkboxField.isSelected();
-
-            if(currentState != desiredState){
+            if (checkboxField.isSelected() != desiredState) {
                 checkboxField.click();
             }
-        }
+        });
     }
 
     public void setRadiobutton(String radiobutton){
@@ -47,8 +48,7 @@ public class SimpleHtmlElementsPage extends Driver {
     }
 
     public void selectDropdownOption(String value){
-        WebElement selectElement = driver.findElement(By.xpath("//select"));
-        Select select = new Select(selectElement);
+        Select select = new Select(driver.findElement(By.xpath("//select")));
         select.selectByValue(value);
     }
 

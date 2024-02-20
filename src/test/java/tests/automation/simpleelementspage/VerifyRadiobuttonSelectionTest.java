@@ -1,31 +1,33 @@
-package tests.automation.simplehtmlelementspage;
+package tests.automation.simpleelementspage;
 
 import library.TestCase;
 import library.pages.HomePage;
-import library.pages.automation.simpleelementspage.SimpleHtmlElementsPage;
+import library.pages.automation.simpleelementspage.SimpleElementsPage;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
 import static library.Driver.driver;
+import static library.pages.HomePage.homePageTitle;
+import static library.pages.automation.simpleelementspage.SimpleElementsPage.simpleElementsPageTitle;
 
-public class VerifyRadiobuttonTest extends TestCase {
+public class VerifyRadiobuttonSelectionTest extends TestCase {
 
     @Test
-    public void verifyRadiobuttonTest() {
+    public void verifyRadiobuttonSelectionTest() {
         HomePage homePage = new HomePage().waitForHomePageContent();
-
         Assert.assertTrue("Home page is not visible",
-                driver.findElement(By.id("Automation_Practice"))
+                driver.findElement(By.xpath(homePageTitle))
                         .isDisplayed());
 
-        SimpleHtmlElementsPage simpleHtmlElementsPage = homePage.navigateSimpleHtmlElementsPage();
-        simpleHtmlElementsPage.waitForPageContent();
+        SimpleElementsPage simpleHtmlElementsPage = homePage.navigateSimpleHtmlElementsPage();
 
+        simpleHtmlElementsPage.waitForSimpleElementsPageContent();
         Assert.assertTrue("Simple html elements page is not visible",
-                driver.findElement(By.id("idExample"))
+                driver.findElement(By.xpath(simpleElementsPageTitle))
                         .isDisplayed());
 
+        //ToDo add setting radiobutton by random value method. Assertions with foreach for elements of radio excluding chosen one
         simpleHtmlElementsPage.setRadiobutton("male");
 
         Assert.assertTrue("Incorrect radiobutton selection",
