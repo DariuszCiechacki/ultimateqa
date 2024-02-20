@@ -10,6 +10,8 @@ import org.openqa.selenium.By;
 import java.util.List;
 
 import static library.Driver.driver;
+import static library.pages.HomePage.homePageTitle;
+import static library.pages.automation.ComplicatedPage.complicatedPageTitle;
 
 public class VerifySocialMediaButtonsLinkTest extends TestCase {
     protected int expectedSocialMediaLinksNumber = 5;
@@ -17,15 +19,18 @@ public class VerifySocialMediaButtonsLinkTest extends TestCase {
     protected String expectedFacebookLink = "https://www.facebook.com/Ultimateqa1/";
 
     @Test
-    public void verifyNumberOfButtonsTest() {
+    public void verifySocialMediaButtonsLinkTest() {
         HomePage homePage = new HomePage().waitForHomePageContent();
-
         Assert.assertTrue("Home page is not visible",
-                driver.findElement(By.id("Automation_Practice"))
+                driver.findElement(By.xpath(homePageTitle))
                         .isDisplayed());
 
         ComplicatedPage complicatedPage = homePage.navigateToComplicatedPage();
+
         complicatedPage.waitForComplicatedPageContent();
+        Assert.assertTrue("Complicated page is not visible",
+                driver.findElement(By.xpath(complicatedPageTitle))
+                        .isDisplayed());
 
         List<String> twitterNavigationLinks = complicatedPage.getSocialMediaNavigationLinks("twitter");
         List<String> facebookNavigationLinks = complicatedPage.getSocialMediaNavigationLinks("facebook");

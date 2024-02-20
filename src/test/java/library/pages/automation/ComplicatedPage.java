@@ -1,23 +1,23 @@
 package library.pages.automation;
 
 import library.Driver;
-import library.modules.automation.complicatedpage.SectionOfSocialMediaFollowsData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.stream.Collector;
+
 import java.util.stream.Collectors;
 
 public class ComplicatedPage extends Driver {
     public static final String complicatedPageTitle = "//span[@id='Skills_Improved']";
     public static final String buttonsXpath = "//div[contains(@class,'et_pb_row et_pb_row_2 et_pb_row_4col')]//a";
+    public static final String socialMediaButtonsSectionXpath = "//div[contains(@class,'et_pb_row et_pb_row_4')]";
 
-    public ComplicatedPage waitForComplicatedPageContent(){
+    public ComplicatedPage waitForComplicatedPageContent() {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
                 By.xpath(complicatedPageTitle)));
 
@@ -25,11 +25,11 @@ public class ComplicatedPage extends Driver {
     }
 
     //Section of buttons
-    public int countButtonsInSectionOfButtons(){
+    public int countButtonsInSectionOfButtons() {
         return driver.findElements(By.xpath(buttonsXpath)).size();
     }
 
-    public List<String> getButtonsText(){
+    public List<String> getButtonsText() {
         return driver.findElements(By.xpath(buttonsXpath)).stream()
                 .map(WebElement::getText).collect(Collectors.toList());
     }
@@ -52,12 +52,13 @@ public class ComplicatedPage extends Driver {
     }
 
     //section of social media follows
-    public List<String> getSocialMediaNavigationLinks(String socialMedia){
-        return new SectionOfSocialMediaFollowsData()
-                .getSocialMediaNavigationLinks(socialMedia);
+    public List<String> getSocialMediaNavigationLinks(String socialMedia) {
+        return driver.findElements(By.xpath(
+                        socialMediaButtonsSectionXpath + "//li[contains(@class,'et-social-" + socialMedia + "')]//a")).stream()
+                .map(WebElement -> WebElement.getAttribute("href")).collect(Collectors.toList());
     }
 
-    public ComplicatedPage expandToggle(){
+    public ComplicatedPage expandToggle() {
         driver.findElement(By.xpath("//span[@id='A_toggle']"))
                 .click();
 
@@ -66,12 +67,12 @@ public class ComplicatedPage extends Driver {
         return this;
     }
 
-    public String getToggleText(){
+    public String getToggleText() {
         return driver.findElement(By.xpath("//div[contains(@class,'et_pb_toggle_content clearfix')]"))
                 .getText();
     }
 
-    private void waitForToggleToExpand(){
+    private void waitForToggleToExpand() {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//div[contains(@class,'et_pb_toggle_content clearfix') and contains(@style,'display: block')]")));
     }
