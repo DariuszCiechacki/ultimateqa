@@ -12,16 +12,17 @@ import java.time.Duration;
 import static library.Driver.driver;
 
 public class LoginPage implements LoginInterface {
+    public static final String loginPageTitle = "//div[contains(@class,'sign-in__container')]";
 
-    public LoginPage waitForPageContent(){
+    public LoginPage waitForLoginPageContent() {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//input[@type='email']")));
+                By.xpath(loginPageTitle)));
 
         return this;
     }
 
     @Override
-    public CollectionsPage login(String email, String password) {
+    public CollectionsPage enterSignInCredentials(String email, String password) {
         driver.findElement(By.xpath("//input[@type='email']"))
                 .sendKeys(email);
 
@@ -39,13 +40,12 @@ public class LoginPage implements LoginInterface {
             WebElement loginMessage = driver.findElement(
                     By.xpath("//div[@data-message='Signed in successfully.']"));
             return loginMessage.isDisplayed();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
 
-    private void clickSubmitButton(){
+    private void clickSubmitButton() {
         driver.findElement(By.xpath("//button[@type='submit']"))
                 .click();
     }

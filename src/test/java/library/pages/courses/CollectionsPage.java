@@ -9,9 +9,11 @@ import java.time.Duration;
 import static library.Driver.driver;
 
 public class CollectionsPage {
-    public CollectionsPage waitForPageContent(){
+    public static final String collectionsPageTitle = "//main[@class='collections']";
+
+    public CollectionsPage waitForCollectionsPageContent(){
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//main[@class='collections']")));
+                By.xpath(collectionsPageTitle)));
 
         return this;
     }

@@ -22,10 +22,11 @@ public class FakeLandingPage {
 
     public Map<String, String> getAvailableCoursesData() {
         return driver.findElements(By.xpath("//div[contains(@class,'et_section_specialty')]//div[contains(@class,'et_pb_blurb_content')]"))
-                .stream()
-                .collect(Collectors.toMap(
-                        element -> element.findElement(By.xpath(".//h4[contains(@class,'et_pb_module_header')]")).getText(),
-                        element -> element.findElement(By.xpath(".//div[contains(@class,'description')]")).getText(),
-                        (existing, replacement) -> existing)); // In case of duplicate keys, keep the existing entry
+                .stream().collect(Collectors.toMap(
+                        element -> element.findElement(By.xpath(".//h4[contains(@class,'et_pb_module_header')]"))
+                                .getText(),
+                        element -> element.findElement(By.xpath(".//div[contains(@class,'description')]"))
+                                .getText(),
+                        (existing, replacement) -> existing));
     }
 }

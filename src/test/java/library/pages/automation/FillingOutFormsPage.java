@@ -28,7 +28,7 @@ public class FillingOutFormsPage {
     public FillingOutFormsPage fillFormByNumber(FormNumber formNumber, FormsDto formsDto) {
         int adjustedFormNumber = formNumber.getIndex();
         WebElement form = driver.findElement(
-                By.xpath("//div[@id='et_pb_contact_form_"+adjustedFormNumber+"']"));
+                By.xpath("//div[@id='et_pb_contact_form_" + adjustedFormNumber + "']"));
 
         new FormsData()
                 .enterName(form, formsDto.getName())
@@ -40,10 +40,10 @@ public class FillingOutFormsPage {
         return this;
     }
 
-    public FillingOutFormsPage clickSubmitButton(FormNumber formNumber){
+    public FillingOutFormsPage clickSubmitButton(FormNumber formNumber) {
         int adjustedFormNumber = formNumber.getIndex();
         WebElement form = driver.findElement(
-                By.xpath("//div[@id='et_pb_contact_form_"+adjustedFormNumber+"']"));
+                By.xpath("//div[@id='et_pb_contact_form_" + adjustedFormNumber + "']"));
 
         form.findElement(By.xpath(".//button[@name='et_builder_submit_button']"))
                 .click();
@@ -55,18 +55,18 @@ public class FillingOutFormsPage {
         int adjustedFormNumber = formNumber.getIndex();
 
         return driver.findElements(
-                By.xpath("//div[@id='et_pb_contact_form_" + adjustedFormNumber + "']//div[contains(@class,'contact-message')]//li"))
+                        By.xpath("//div[@id='et_pb_contact_form_" + adjustedFormNumber + "']//div[contains(@class,'contact-message')]//li"))
                 .stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
-    private void handleCaptchaIfNecessary(WebElement form){
-        try{
+    private void handleCaptchaIfNecessary(WebElement form) {
+        try {
             WebElement captcha = form.findElement(By.xpath(".//input[contains(@name,'captcha')]"));
             if (captcha.isDisplayed()) {
                 new CaptchaHandler().handleCaptcha(form);
             }
+        } catch (Exception ignored) {
         }
-        catch (Exception ignored){}
     }
 
     private void submitForm(WebElement form) {
