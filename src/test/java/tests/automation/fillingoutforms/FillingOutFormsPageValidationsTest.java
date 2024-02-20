@@ -15,8 +15,7 @@ public class FillingOutFormsPageValidationsTest extends TestCase {
 
     @Test
     public void fillingOutFormsPageValidationsTest(){
-        HomePage homePage = new HomePage().waitForPageContent();
-
+        HomePage homePage = new HomePage().waitForHomePageContent();
         Assert.assertTrue("Home page is not visible",
                 driver.findElement(By.id("Automation_Practice"))
                         .isDisplayed());

@@ -13,9 +13,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class HomePage extends Driver {
-    public HomePage waitForPageContent(){
+    public static final String homePageTitle = "//span[@id='Automation_Practice']";
+
+    public HomePage waitForHomePageContent(){
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//span[@id='Automation_Practice']")));
+                By.xpath(homePageTitle)));
 
         return this;
     }

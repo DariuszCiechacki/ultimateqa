@@ -18,14 +18,14 @@ public class VerifySocialMediaButtonsLinkTest extends TestCase {
 
     @Test
     public void verifyNumberOfButtonsTest() {
-        HomePage homePage = new HomePage().waitForPageContent();
+        HomePage homePage = new HomePage().waitForHomePageContent();
 
         Assert.assertTrue("Home page is not visible",
                 driver.findElement(By.id("Automation_Practice"))
                         .isDisplayed());
 
         ComplicatedPage complicatedPage = homePage.navigateToComplicatedPage();
-        complicatedPage.waitForPageContent();
+        complicatedPage.waitForComplicatedPageContent();
 
         List<String> twitterNavigationLinks = complicatedPage.getSocialMediaNavigationLinks("twitter");
         List<String> facebookNavigationLinks = complicatedPage.getSocialMediaNavigationLinks("facebook");

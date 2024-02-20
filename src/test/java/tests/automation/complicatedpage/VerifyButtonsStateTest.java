@@ -1,7 +1,6 @@
 package tests.automation.complicatedpage;
 
 import library.TestCase;
-import library.modules.automation.complicatedpage.SectionOfButtonsData;
 import library.pages.HomePage;
 import library.pages.automation.ComplicatedPage;
 import org.junit.Assert;
@@ -9,27 +8,26 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 
 import static library.Driver.driver;
+import static library.pages.HomePage.homePageTitle;
+import static library.pages.automation.ComplicatedPage.complicatedPageTitle;
 
 public class VerifyButtonsStateTest extends TestCase {
+
     @Test
     public void verifyButtonsStateTest() {
-        HomePage homePage = new HomePage().waitForPageContent();
-
+        HomePage homePage = new HomePage().waitForHomePageContent();
         Assert.assertTrue("Home page is not visible",
-                driver.findElement(By.id("Automation_Practice"))
+                driver.findElement(By.xpath(homePageTitle))
                         .isDisplayed());
 
         ComplicatedPage complicatedPage = homePage.navigateToComplicatedPage();
-        complicatedPage.waitForPageContent();
 
+        complicatedPage.waitForComplicatedPageContent();
         Assert.assertTrue("Complicated page is not visible",
-                driver.findElement(By.id("Skills_Improved"))
+                driver.findElement(By.xpath(complicatedPageTitle))
                         .isDisplayed());
 
-        Assert.assertFalse("List of buttons text is empty",
-                complicatedPage.getButtonsText().isEmpty());
-
-        driver.findElements(By.xpath(SectionOfButtonsData.buttonsXpath)).forEach(element -> Assert.assertTrue(
-                "Buttons are not enabled", element.isEnabled()));
+        Assert.assertTrue("Buttons are not enabled",
+                complicatedPage.verifyButtonsState());
     }
 }

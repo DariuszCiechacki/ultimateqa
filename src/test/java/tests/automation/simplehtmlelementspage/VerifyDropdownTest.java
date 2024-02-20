@@ -12,7 +12,7 @@ import static library.Driver.driver;
 public class VerifyDropdownTest extends TestCase {
     @Test
     public void verifyDropdownTest() {
-        HomePage homePage = new HomePage().waitForPageContent();
+        HomePage homePage = new HomePage().waitForHomePageContent();
 
         Assert.assertTrue("Home page is not visible",
                 driver.findElement(By.id("Automation_Practice"))

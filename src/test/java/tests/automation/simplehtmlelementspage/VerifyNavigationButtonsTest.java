@@ -14,7 +14,7 @@ public class VerifyNavigationButtonsTest extends TestCase {
 
     @Test
     public void verifyNavigationButtonsTest(){
-        HomePage homePage = new HomePage().waitForPageContent();
+        HomePage homePage = new HomePage().waitForHomePageContent();
 
         Assert.assertTrue("Home page is not visible",
                 driver.findElement(By.id("Automation_Practice"))

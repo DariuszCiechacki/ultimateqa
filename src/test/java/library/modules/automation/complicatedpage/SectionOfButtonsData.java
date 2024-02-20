@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SectionOfButtonsData extends Driver {
-    public static String buttonsXpath = "//div[contains(@class,'et_pb_row et_pb_row_2 et_pb_row_4col')]//a";
+    public static final String buttonsXpath = "//div[contains(@class,'et_pb_row et_pb_row_2 et_pb_row_4col')]//a";
 
     public int countButtonsInSectionOfButtons(){
         List<WebElement> buttons = driver.findElements(By.xpath(buttonsXpath));
