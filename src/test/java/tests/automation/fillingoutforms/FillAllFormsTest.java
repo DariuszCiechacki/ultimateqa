@@ -1,6 +1,7 @@
 package tests.automation.fillingoutforms;
 
 import library.TestCase;
+import library.modules.automation.fillingoutforms.FormNumber;
 import library.modules.automation.fillingoutforms.FormsFactory;
 import library.pages.HomePage;
 import library.pages.automation.FillingOutFormsPage;
@@ -29,13 +30,13 @@ public class FillAllFormsTest extends TestCase {
                 driver.findElement(By.xpath(fillingOutFormsTitle))
                         .isDisplayed());
 
-        fillingOutFormsPage.fillFormByNumber(1, FormsFactory.createFormData());
+        fillingOutFormsPage.fillFormByNumber(FormNumber.FIRST_FORM, FormsFactory.createFormData());
         Assert.assertTrue("First form was not filled successfully",
                 driver.findElement(By.xpath(
                         "//div[@id='et_pb_contact_form_0']//p[text()='"+successMessage+"']"))
                         .isDisplayed());
 
-        fillingOutFormsPage.fillFormByNumber(2, FormsFactory.createFormData());
+        fillingOutFormsPage.fillFormByNumber(FormNumber.SECOND_FORM, FormsFactory.createFormData());
         Assert.assertTrue("Second form was not filled successfully",
                 driver.findElement(By.xpath(
                                 "//div[@id='et_pb_contact_form_1']//p[text()='"+successMessage+"']"))

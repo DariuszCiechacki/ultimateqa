@@ -1,5 +1,6 @@
 package library.pages.automation;
 
+import library.modules.automation.fillingoutforms.FormNumber;
 import library.modules.automation.fillingoutforms.FormsData;
 import library.modules.automation.fillingoutforms.FormsDto;
 import library.services.CaptchaHandler;
@@ -25,8 +26,8 @@ public class FillingOutFormsPage {
         return this;
     }
 
-    public FillingOutFormsPage fillFormByNumber(int formNumber, FormsDto formsDto) {
-        int adjustedFormNumber = formNumber - 1;
+    public FillingOutFormsPage fillFormByNumber(FormNumber formNumber, FormsDto formsDto) {
+        int adjustedFormNumber = formNumber.getIndex();
         WebElement form = driver.findElement(
                 By.xpath("//div[@id='et_pb_contact_form_"+adjustedFormNumber+"']"));
 
