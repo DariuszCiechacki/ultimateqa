@@ -57,19 +57,22 @@ public class ComplicatedPage extends Driver {
                 .getSocialMediaNavigationLinks(socialMedia);
     }
 
-    public String getToggleText(){
-        expandToggle();
+    public ComplicatedPage expandToggle(){
+        driver.findElement(By.xpath("//span[@id='A_toggle']"))
+                .click();
 
+        waitForToggleToExpand();
+
+        return this;
+    }
+
+    public String getToggleText(){
         return driver.findElement(By.xpath("//div[contains(@class,'et_pb_toggle_content clearfix')]"))
                 .getText();
     }
 
-    private void expandToggle(){
-        driver.findElement(By.xpath("//span[@id='A_toggle']"))
-                .click();
-
+    private void waitForToggleToExpand(){
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//div[contains(@class,'et_pb_toggle_content clearfix') and contains(@style,'display: block')]")));
-
     }
 }
