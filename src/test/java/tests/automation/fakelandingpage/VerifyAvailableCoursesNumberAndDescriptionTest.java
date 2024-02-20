@@ -10,23 +10,25 @@ import org.openqa.selenium.By;
 import java.util.Map;
 
 import static library.Driver.driver;
+import static library.pages.HomePage.homePageTitle;
+import static library.pages.automation.FakeLandingPage.fakeLandingPageTitle;
 
-public class VerifyAvailableCoursesTest extends TestCase {
+public class VerifyAvailableCoursesNumberAndDescriptionTest extends TestCase {
     protected int expectedNumberOfCourses = 8;
     protected String expectedCourseDescription = "Duis egestas aliquet aliquet. Maecenas erat eros, fringilla et leo eget, viverra pretium nulla.";
 
     @Test
-    public void verifyAvailableCoursesTest(){
+    public void verifyAvailableCoursesNumberAndDescriptionTest(){
         HomePage homePage = new HomePage().waitForHomePageContent();
         Assert.assertTrue("Home page is not visible",
-                driver.findElement(By.id("Automation_Practice"))
+                driver.findElement(By.xpath(homePageTitle))
                         .isDisplayed());
 
         FakeLandingPage fakeLandingPage = homePage.navigateToFakeLandingPage();
-        fakeLandingPage.waitForPageContent();
 
+        fakeLandingPage.waitForFakeLandingPageContent();
         Assert.assertTrue("Fake landing page is not visible",
-                driver.findElement(By.xpath("//div[contains(@class,'et_section_specialty')]"))
+                driver.findElement(By.xpath(fakeLandingPageTitle))
                         .isDisplayed());
 
         Map<String, String> availableCourses = fakeLandingPage.getAvailableCoursesData();

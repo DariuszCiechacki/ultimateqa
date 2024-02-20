@@ -10,31 +10,26 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-public class FakeLandingPage extends Driver {
+import static library.Driver.driver;
 
-    public FakeLandingPage waitForPageContent() {
+public class FakeLandingPage {
+    public static final String fakeLandingPageTitle = "//a[contains(@class,'et_pb_button et_pb_button_1')]";
+
+    public FakeLandingPage waitForFakeLandingPageContent() {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//a[contains(@class,'et_pb_button et_pb_button_1')]")));
+                By.xpath(fakeLandingPageTitle)));
 
         return this;
     }
 
     public Map<String, String> getAvailableCoursesData() {
-        Map<String, String> availableCourses = new HashMap<>();
-
-        List<WebElement> availableCoursesElements = driver.findElements(By.xpath(
-                "//div[contains(@class,'et_section_specialty')]//div[contains(@class,'et_pb_blurb_content')]"));
-
-        availableCoursesElements.forEach(element -> {
-            String courseName = element.findElement(By.xpath(".//h4[contains(@class,'et_pb_module_header')]"))
-                    .getText();
-            String courseDescription = element.findElement(By.xpath(".//div[contains(@class,'description')]"))
-                    .getText();
-
-            availableCourses.put(courseName, courseDescription);
-        });
-
-        return availableCourses;
+        return driver.findElements(By.xpath("//div[contains(@class,'et_section_specialty')]//div[contains(@class,'et_pb_blurb_content')]"))
+                .stream()
+                .collect(Collectors.toMap(
+                        element -> element.findElement(By.xpath(".//h4[contains(@class,'et_pb_module_header')]")).getText(),
+                        element -> element.findElement(By.xpath(".//div[contains(@class,'description')]")).getText(),
+                        (existing, replacement) -> existing)); // In case of duplicate keys, keep the existing entry
     }
 }
