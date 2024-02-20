@@ -21,7 +21,7 @@ public class FillingOutFormsPageValidationsTest extends TestCase {
                         .isDisplayed());
 
         FillingOutFormsPage fillingOutFormsPage = homePage.navigateToFillingOutFormsPage();
-        fillingOutFormsPage.waitForPageContent();
+        fillingOutFormsPage.waitForFillingOutFormsPageContent();
 
         Assert.assertTrue("Filling out forms page is not visible",
                 driver.findElement(By.xpath("//textarea[@name='et_pb_contact_message_0']"))

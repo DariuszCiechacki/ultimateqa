@@ -9,34 +9,36 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 
 import static library.Driver.driver;
+import static library.pages.HomePage.homePageTitle;
+import static library.pages.automation.FillingOutFormsPage.fillingOutFormsTitle;
 
 public class FillAllFormsTest extends TestCase {
+    protected final String successMessage = "Thanks for contacting us";
 
     @Test
     public void fillAllFormsTest(){
         HomePage homePage = new HomePage().waitForHomePageContent();
-
         Assert.assertTrue("Home page is not visible",
-                driver.findElement(By.id("Automation_Practice"))
+                driver.findElement(By.xpath(homePageTitle))
                         .isDisplayed());
 
         FillingOutFormsPage fillingOutFormsPage = homePage.navigateToFillingOutFormsPage();
-        fillingOutFormsPage.waitForPageContent();
 
+        fillingOutFormsPage.waitForFillingOutFormsPageContent();
         Assert.assertTrue("Filling out forms page is not visible",
-                driver.findElement(By.xpath("//textarea[@name='et_pb_contact_message_0']"))
+                driver.findElement(By.xpath(fillingOutFormsTitle))
                         .isDisplayed());
 
-        fillingOutFormsPage.fillForm(1, FormsFactory.createFormData());
+        fillingOutFormsPage.fillFormByNumber(1, FormsFactory.createFormData());
         Assert.assertTrue("First form was not filled successfully",
                 driver.findElement(By.xpath(
-                        "//div[@id='et_pb_contact_form_0']//p[text()='Thanks for contacting us']"))
+                        "//div[@id='et_pb_contact_form_0']//p[text()='"+successMessage+"']"))
                         .isDisplayed());
 
-        fillingOutFormsPage.fillForm(2, FormsFactory.createFormData());
+        fillingOutFormsPage.fillFormByNumber(2, FormsFactory.createFormData());
         Assert.assertTrue("Second form was not filled successfully",
                 driver.findElement(By.xpath(
-                                "//div[@id='et_pb_contact_form_1']//p[text()='Thanks for contacting us']"))
+                                "//div[@id='et_pb_contact_form_1']//p[text()='"+successMessage+"']"))
                         .isDisplayed());
     }
 }
