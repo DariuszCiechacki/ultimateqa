@@ -11,7 +11,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.Map;
 
-public class SimpleHtmlElementsPage extends Driver {
+import static library.Driver.driver;
+
+public class SimpleHtmlElementsPage {
 
     public SimpleHtmlElementsPage waitForPageContent(){
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(By.id("idExample")));

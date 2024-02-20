@@ -7,7 +7,9 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SectionOfButtonsData extends Driver {
+import static library.Driver.driver;
+
+public class SectionOfButtonsData {
     public static String buttonsXpath = "//div[contains(@class,'et_pb_row et_pb_row_2 et_pb_row_4col')]//a";
 
     public int countButtonsInSectionOfButtons(){

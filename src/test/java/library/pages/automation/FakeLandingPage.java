@@ -11,7 +11,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FakeLandingPage extends Driver {
+import static library.Driver.driver;
+
+public class FakeLandingPage {
 
     public FakeLandingPage waitForPageContent() {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(

@@ -2,7 +2,7 @@ package library.pages.automation;
 
 import library.Driver;
 
-public class FakePricingPage extends Driver {
+public class FakePricingPage {
 
     public FakePricingPage waitForPageContent(){
 

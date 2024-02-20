@@ -7,7 +7,9 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SectionOfSocialMediaFollowsData extends Driver {
+import static library.Driver.driver;
+
+public class SectionOfSocialMediaFollowsData {
     public static String socialMediaButtonsSectionXpath = "//div[contains(@class,'et_pb_row et_pb_row_4')]";
 
     public List<String> getSocialMediaNavigationLinks(String socialMedia){

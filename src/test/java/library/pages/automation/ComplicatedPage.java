@@ -10,7 +10,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-public class ComplicatedPage extends Driver {
+import static library.Driver.driver;
+
+public class ComplicatedPage {
 
     public ComplicatedPage waitForPageContent(){
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(By.id("Skills_Improved")));

@@ -4,7 +4,7 @@ import library.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class CaptchaHandler extends Driver {
+public class CaptchaHandler {
 
     public void handleCaptcha(WebElement captchaContainer){
         WebElement captchaInput = captchaContainer.findElement(
