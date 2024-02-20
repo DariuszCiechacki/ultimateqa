@@ -1,6 +1,5 @@
 package library.pages.automation;
 
-import library.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;

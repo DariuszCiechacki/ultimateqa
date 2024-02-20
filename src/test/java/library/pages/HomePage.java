@@ -1,6 +1,5 @@
 package library.pages;
 
-import library.Driver;
 import library.pages.automation.ComplicatedPage;
 import library.pages.automation.FakeLandingPage;
 import library.pages.automation.FakePricingPage;

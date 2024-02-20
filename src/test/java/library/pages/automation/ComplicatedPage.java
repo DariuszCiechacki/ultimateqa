@@ -1,6 +1,5 @@
 package library.pages.automation;
 
-import library.Driver;
 import library.modules.automation.complicatedpage.SectionOfButtonsData;
 import library.modules.automation.complicatedpage.SectionOfSocialMediaFollowsData;
 import org.openqa.selenium.By;

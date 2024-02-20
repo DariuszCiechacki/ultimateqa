@@ -1,6 +1,5 @@
 package library.modules.automation.fillingoutforms;
 
-import library.Driver;
 import library.services.CaptchaHandler;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

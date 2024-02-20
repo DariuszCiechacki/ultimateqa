@@ -1,6 +1,5 @@
 package library.pages.automation.simpleelementspage;
 
-import library.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;

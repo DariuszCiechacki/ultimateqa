@@ -1,6 +1,5 @@
 package library.pages.automation.simpleelementspage;
 
-import library.Driver;
 import library.modules.automation.simplepage.TablesSectionData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
