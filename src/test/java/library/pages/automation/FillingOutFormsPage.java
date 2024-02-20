@@ -41,8 +41,8 @@ public class FillingOutFormsPage {
         return this;
     }
 
-    public FillingOutFormsPage clickSubmitButton(int formNumber){
-        int adjustedFormNumber = formNumber - 1;
+    public FillingOutFormsPage clickSubmitButton(FormNumber formNumber){
+        int adjustedFormNumber = formNumber.getIndex();
         WebElement form = driver.findElement(
                 By.xpath("//div[@id='et_pb_contact_form_"+adjustedFormNumber+"']"));
 
@@ -52,8 +52,8 @@ public class FillingOutFormsPage {
         return this;
     }
 
-    public List<String> getRequiredFieldsList(int formNumber) {
-        int adjustedFormNumber = formNumber - 1;
+    public List<String> getRequiredFieldsList(FormNumber formNumber) {
+        int adjustedFormNumber = formNumber.getIndex();
 
         return driver.findElements(
                 By.xpath("//div[@id='et_pb_contact_form_" + adjustedFormNumber + "']//div[contains(@class,'contact-message')]//li"))
