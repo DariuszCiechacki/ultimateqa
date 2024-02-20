@@ -1,6 +1,5 @@
 package library.modules.automation.simplepage;
 
-import library.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 

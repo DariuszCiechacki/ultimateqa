@@ -1,17 +1,7 @@
 package library.modules.automation.fillingoutforms;
 
-import library.Driver;
-import library.services.CaptchaHandler;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-
-import static library.Driver.driver;
 
 public class FormsData {
     public FormsData enterName(WebElement form, String name){
