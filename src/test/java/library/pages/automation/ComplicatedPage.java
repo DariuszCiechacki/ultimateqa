@@ -1,6 +1,5 @@
 package library.pages.automation;
 
-import library.Driver;
 import library.modules.automation.complicatedpage.SectionOfButtonsData;
 import library.modules.automation.complicatedpage.SectionOfSocialMediaFollowsData;
 import org.openqa.selenium.By;
@@ -10,7 +9,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-public class ComplicatedPage extends Driver {
+import static library.Driver.driver;
+
+public class ComplicatedPage {
 
     public ComplicatedPage waitForPageContent(){
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(By.id("Skills_Improved")));

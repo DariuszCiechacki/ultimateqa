@@ -1,6 +1,5 @@
 package library.pages.automation;
 
-import library.Driver;
 import library.modules.automation.fillingoutforms.FormsData;
 import library.modules.automation.fillingoutforms.FormsDto;
 import org.openqa.selenium.By;
@@ -11,7 +10,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-public class FillingOutFormsPage extends Driver {
+import static library.Driver.driver;
+
+public class FillingOutFormsPage {
 
     public FillingOutFormsPage waitForPageContent() {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(

@@ -1,6 +1,5 @@
 package library.modules.automation.fillingoutforms;
 
-import library.Driver;
 import library.services.CaptchaHandler;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -11,7 +10,9 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FormsData extends Driver {
+import static library.Driver.driver;
+
+public class FormsData {
     public FormsData fillForm(int formNumber, FormsDto formsDto) {
         int adjustedFormNumber = formNumber - 1;
         WebElement form = driver.findElement(

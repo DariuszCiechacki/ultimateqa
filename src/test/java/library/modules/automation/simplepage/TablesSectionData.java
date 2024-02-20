@@ -1,6 +1,5 @@
 package library.modules.automation.simplepage;
 
-import library.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -8,7 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TablesSectionData extends Driver {
+import static library.Driver.driver;
+
+public class TablesSectionData {
 
     public Map<String, Map<String, String>> getUniqueIdTableData(){
         Map<String, Map<String, String>> uniqueIdTableData = new HashMap<>();

@@ -1,6 +1,5 @@
 package library.pages;
 
-import library.Driver;
 import library.pages.automation.ComplicatedPage;
 import library.pages.automation.FakeLandingPage;
 import library.pages.automation.FakePricingPage;
@@ -13,7 +12,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class HomePage extends Driver {
+import static library.Driver.driver;
+
+public class HomePage {
     public HomePage waitForPageContent(){
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//span[@id='Automation_Practice']")));
