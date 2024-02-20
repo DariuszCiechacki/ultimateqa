@@ -12,6 +12,7 @@ import static library.pages.HomePage.homePageTitle;
 import static library.pages.automation.ComplicatedPage.complicatedPageTitle;
 
 public class VerifyButtonsStateTest extends TestCase {
+    protected final int expectedNumberOfButtons = 12;
 
     @Test
     public void verifyButtonsStateTest() {
@@ -26,6 +27,9 @@ public class VerifyButtonsStateTest extends TestCase {
         Assert.assertTrue("Complicated page is not visible",
                 driver.findElement(By.xpath(complicatedPageTitle))
                         .isDisplayed());
+
+        Assert.assertEquals("Incorrect number of buttons", expectedNumberOfButtons,
+                complicatedPage.countButtonsInSectionOfButtons());
 
         Assert.assertTrue("Buttons are not enabled",
                 complicatedPage.verifyButtonsState());

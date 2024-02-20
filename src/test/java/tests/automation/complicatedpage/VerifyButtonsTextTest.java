@@ -12,7 +12,8 @@ import static library.pages.HomePage.homePageTitle;
 import static library.pages.automation.ComplicatedPage.complicatedPageTitle;
 
 public class VerifyButtonsTextTest extends TestCase {
-    protected String expectedButtonsText = "Button";
+    protected final int expectedNumberOfButtons = 12;
+    protected final String expectedButtonsText = "Button";
 
     @Test
     public void verifyButtonsTextTest() {
@@ -28,8 +29,8 @@ public class VerifyButtonsTextTest extends TestCase {
                 driver.findElement(By.xpath(complicatedPageTitle))
                         .isDisplayed());
 
-        Assert.assertFalse("List of buttons text is empty",
-                complicatedPage.getButtonsText().isEmpty());
+        Assert.assertEquals("Incorrect number of buttons", expectedNumberOfButtons,
+                complicatedPage.countButtonsInSectionOfButtons());
 
         complicatedPage.getButtonsText().forEach(buttonText -> Assert.assertEquals(
                 "Button text does not match",

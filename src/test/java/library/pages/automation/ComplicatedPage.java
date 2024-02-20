@@ -26,9 +26,7 @@ public class ComplicatedPage extends Driver {
 
     //Section of buttons
     public int countButtonsInSectionOfButtons(){
-        List<WebElement> buttons = driver.findElements(By.xpath(buttonsXpath));
-
-        return buttons.size();
+        return driver.findElements(By.xpath(buttonsXpath)).size();
     }
 
     public List<String> getButtonsText(){
