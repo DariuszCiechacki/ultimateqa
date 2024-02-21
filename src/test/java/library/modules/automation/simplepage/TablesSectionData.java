@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static library.Driver.driver;
+import static drivers.Driver.driver;
 
 public class TablesSectionData {
     //ToDo refactor getting tables data, create one method with parameter and apply stream

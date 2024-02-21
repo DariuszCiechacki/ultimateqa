@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 
 import java.util.List;
 
-import static library.Driver.driver;
+import static drivers.Driver.driver;
 import static library.pages.HomePage.homePageTitle;
 import static library.pages.automation.ComplicatedPage.complicatedPageTitle;
 

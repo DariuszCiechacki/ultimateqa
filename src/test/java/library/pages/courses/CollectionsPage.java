@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static library.Driver.driver;
+import static drivers.Driver.driver;
 
 public class CollectionsPage {
     public static final String collectionsPageTitle = "//main[@class='collections']";

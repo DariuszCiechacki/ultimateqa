@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
-import static library.Driver.driver;
+import static drivers.Driver.driver;
 import static library.pages.HomePage.homePageTitle;
 import static library.pages.automation.simpleelementspage.SimpleElementsPage.simpleElementsPageTitle;
 

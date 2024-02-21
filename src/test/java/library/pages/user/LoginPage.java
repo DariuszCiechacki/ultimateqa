@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static library.Driver.driver;
+import static drivers.Driver.driver;
 
 public class LoginPage implements LoginInterface {
     public static final String loginPageTitle = "//div[contains(@class,'sign-in__container')]";

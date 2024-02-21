@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static library.Driver.driver;
+import static drivers.Driver.driver;
 
 public class ButtonSuccessPage {
     public static final String buttonSuccessPageTitle = "//h1[@class='entry-title']";

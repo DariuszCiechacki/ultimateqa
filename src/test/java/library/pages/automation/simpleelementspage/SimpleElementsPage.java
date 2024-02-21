@@ -11,7 +11,7 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.Map;
 
-import static library.Driver.driver;
+import static drivers.Driver.driver;
 
 public class SimpleElementsPage {
     public static final String simpleElementsPageTitle = "//div[@id='idExample']";
