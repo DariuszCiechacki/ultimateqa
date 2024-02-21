@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static library.Driver.driver;
+import static drivers.Driver.driver;
 
 public class HomePage {
     public static final String homePageTitle = "//span[@id='Automation_Practice']";

@@ -13,7 +13,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static library.Driver.driver;
+import static drivers.Driver.driver;
 
 public class FillingOutFormsPage {
     public static final String fillingOutFormsTitle = "//textarea[@name='et_pb_contact_message_0']";

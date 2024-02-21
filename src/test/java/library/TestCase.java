@@ -1,26 +1,36 @@
 package library;
 
 import com.ultimateqa.config.ConfigLoader;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import drivers.BrowserType;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-import static library.Driver.driver;
+import static drivers.Driver.driver;
 
 public class TestCase {
 
     @BeforeClass
-    public static void setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().setSize(new Dimension(1700, 1080));
-        driver.get(ConfigLoader.getProperty("baseUrl"));
+    public static void setUpWebDriver() {
+        String browserName = System.getProperty("browser", "CHROME");
+
+        BrowserType browserType = BrowserType.valueOf(browserName.toUpperCase());
+        driver = browserType.createWebDriver();
+
+        setWindowDimension();
+        navigateToBasePageUrl();
     }
 
     @AfterClass
     public static void tearDown() {
         driver.quit();
+    }
+
+    private static void setWindowDimension(){
+        driver.manage().window().setSize(new Dimension(1700, 1080));
+    }
+
+    private static void navigateToBasePageUrl(){
+        driver.get(ConfigLoader.getProperty("baseUrl"));
     }
 }

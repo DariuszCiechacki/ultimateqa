@@ -8,7 +8,7 @@ import java.time.Duration;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static library.Driver.driver;
+import static drivers.Driver.driver;
 
 public class FakeLandingPage {
     public static final String fakeLandingPageTitle = "//a[contains(@class,'et_pb_button et_pb_button_1')]";
