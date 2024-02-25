@@ -5,6 +5,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.Duration;
@@ -16,7 +17,6 @@ import static drivers.Driver.driver;
 
 public class FakeLandingPage {
     public static final String fakeLandingPageTitle = "//a[contains(@class,'et_pb_button et_pb_button_1')]";
-    public static final String filePath = "src/test/java/library/files/availableCourses.txt";
 
     public FakeLandingPage waitForFakeLandingPageContent() {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
@@ -33,21 +33,5 @@ public class FakeLandingPage {
                         element -> element.findElement(By.xpath(".//div[contains(@class,'description')]"))
                                 .getText(),
                         (existing, replacement) -> existing));
-    }
-
-    public void createTextFileWithAvailableCourses(Set<String> availableCoursesList) {
-        try{
-            BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
-            for (String courseName : availableCoursesList){
-                writer.write(courseName);
-                writer.newLine();
-            }
-            writer.close();
-        }
-        catch (IOException exception){}
-    }
-
-    public void deleteCreatedFile(){
-
     }
 }

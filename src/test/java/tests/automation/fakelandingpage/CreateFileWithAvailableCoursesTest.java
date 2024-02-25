@@ -3,18 +3,19 @@ package tests.automation.fakelandingpage;
 import library.TestCase;
 import library.pages.HomePage;
 import library.pages.automation.FakeLandingPage;
+import library.services.FilesHandler;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
 import java.util.Map;
-import java.util.Set;
 
 import static drivers.Driver.driver;
 import static library.pages.HomePage.homePageTitle;
 import static library.pages.automation.FakeLandingPage.fakeLandingPageTitle;
 
 public class CreateFileWithAvailableCoursesTest extends TestCase {
+    protected final String filePath = "src/test/java/library/files/availableCourses.txt";
 
     @Test
     public void createFileWithAvailableCoursesTest(){
@@ -32,7 +33,13 @@ public class CreateFileWithAvailableCoursesTest extends TestCase {
 
         Map<String, String> availableCoursesMap = fakeLandingPage.getAvailableCoursesData();
 
-        fakeLandingPage.createTextFileWithAvailableCourses(availableCoursesMap.keySet());
+        FilesHandler.createTextFileFromStringSet(
+                availableCoursesMap.keySet(), filePath);
 
+        Assert.assertTrue("File was not created successfully",
+                FilesHandler.fileExists(filePath));
+
+        Assert.assertTrue("File was not deleted successfully",
+                FilesHandler.deleteCreatedFile(filePath));
     }
 }
