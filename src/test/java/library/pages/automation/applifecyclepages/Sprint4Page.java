@@ -9,10 +9,11 @@ import java.time.Duration;
 import static drivers.Driver.driver;
 
 public class Sprint4Page {
+    public static final String sprint4PageTitle = "//h2[text() = 'Iteration 4']";
 
     public Sprint4Page waitForSprint4PageContent(){
         new WebDriverWait(driver, Duration.ofSeconds(30)).
-                until(ExpectedConditions.elementToBeClickable(By.xpath("//h2[text() = 'Iteration 4']")));
+                until(ExpectedConditions.elementToBeClickable(By.xpath(sprint4PageTitle)));
 
         return this;
     }
