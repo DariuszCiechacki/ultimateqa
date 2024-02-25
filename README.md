@@ -18,7 +18,9 @@ Streams: Streamlines iteration over lists for efficient data processing.\
 File Operations: Demonstrates capability with file creation and deletion, useful for test evidence or data handling.\
 JUnit Assertions: Ensures accurate test outcomes, validating functionality as expected.\
 Secure Configurations: Safely stores and retrieves user credentials, enhancing security.\
-Cross-Browser Testing: Expands test coverage across multiple browsers for comprehensive compatibility checks.
+Cross-Browser Testing: Expands test coverage across multiple browsers for comprehensive compatibility checks.\
+Headless Testing: Enables tests to run in a headless mode, facilitating faster execution times and resource optimization for continuous integration environments.
+GitHub CI/CD Integration: Integrates with GitHub's CI/CD pipelines, enabling automated builds and tests to ensure code quality and reliability with every push to master branch. 
 
 # Java/Selenium WebDriver Methods Utilized:
 This section lists some of the key Java and Selenium WebDriver methods used in this project, along with the classes they can be found in. \
@@ -31,12 +33,14 @@ Enums and Interfaces: Standardizes test parameters and structures test developme
 DTO: Facilitates efficient data transfer within tests, essential for managing complex test states.
 
 # Installation:
-1. Clone the repository: git clone https://github.com/yourusername/ultimate-qa-automation.git
-2. Install Maven dependencies: mvn install
-3. To run specific test use following command: mvn clean test -Dtest="OpenHomePageTest" (replace "OpenHomePageTest" with desired test name)
+1. Clone the project to your local machine using the following command: git clone https://github.com/yourusername/ultimate-qa-automation.git
+2. Navigate to the project directory: cd ultimate-qa-automation 
+3. Install the necessary dependencies with Maven: mvn install 
+4. To execute a specific test, use the command. Replace "OpenHomePageTest" with the name of the test class you wish to run: mvn clean test -Dtest="OpenHomePageTest"
+5. The tests are set to run on Chrome by default. To specify a different browser (Chrome, Edge, Firefox), append -Dbrowser=yourBrowserChoice to your command. For example, to run tests on Firefox: mvn clean test -Dbrowser=firefox -Dtest="OpenHomePageTest"
+6. For headless execution, which is particularly useful for CI/CD pipelines or environments without a GUI, add -Dheadless=true to your command: mvn clean test -Dheadless=true -Dtest="OpenHomePageTest"
 
 # Upcoming Features:
 Parallel Execution: To reduce test run times through concurrent test execution.\
 Test Suites: Organizing tests into suites for better management and execution.\
-CI/CD Integration: Automating test runs within CI/CD pipelines for continuous quality assurance.\
-Headless Test Execution: Offering headless mode execution for faster and resource-efficient testing.
+Report Tool: Integrate project with report tool to have a clear view which tests failed\
