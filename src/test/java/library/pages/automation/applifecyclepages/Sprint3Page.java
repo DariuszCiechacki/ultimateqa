@@ -27,10 +27,8 @@ public class Sprint3Page {
                 .enterLastName(appLifecycleDto.getLastName());
     }
 
-    public Sprint4Page navigateToSprint4Page(){
-        driver.findElement(By.xpath("//a[contains(@href,'lifecycle-sprint-4')]"))
+    public void submitForm(){
+        driver.findElement(By.xpath("//input[@type='submit']"))
                 .click();
-
-        return new Sprint4Page();
     }
 }
