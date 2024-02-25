@@ -11,4 +11,11 @@ public class AppLifecycleData {
 
         return this;
     }
+
+    public AppLifecycleData enterLastName(String lastName){
+        driver.findElement(By.xpath("//input[@name='lastname']"))
+                .sendKeys(lastName);
+
+        return this;
+    }
 }

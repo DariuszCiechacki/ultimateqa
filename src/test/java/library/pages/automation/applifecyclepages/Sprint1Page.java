@@ -1,6 +1,7 @@
 package library.pages.automation.applifecyclepages;
 
 import library.modules.automation.applifecycle.AppLifecycleData;
+import library.modules.automation.applifecycle.AppLifecycleDto;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -19,8 +20,8 @@ public class Sprint1Page {
         return this;
     }
 
-    public void enterFirstName(String firstName){
-        new AppLifecycleData().enterFirstName(firstName);
+    public void enterFirstName(AppLifecycleDto appLifecycleDto){
+        new AppLifecycleData().enterFirstName(appLifecycleDto.getFirstName());
     }
 
     public Sprint2Page navigateToSprint2Page(){

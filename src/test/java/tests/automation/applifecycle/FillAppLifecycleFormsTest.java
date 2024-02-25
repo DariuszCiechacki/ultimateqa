@@ -1,6 +1,7 @@
 package tests.automation.applifecycle;
 
 import library.TestCase;
+import library.modules.automation.applifecycle.AppLifecycleFactory;
 import library.pages.HomePage;
 import library.pages.automation.applifecyclepages.*;
 import org.junit.Assert;
@@ -32,7 +33,7 @@ public class FillAppLifecycleFormsTest extends TestCase {
                 driver.findElement(By.xpath(sprint1PageTitle))
                         .isDisplayed());
 
-        sprint1Page.enterFirstName("");
+        sprint1Page.enterFirstName(AppLifecycleFactory.createAppLifecycleFormData());
 
         Sprint2Page sprint2Page = sprint1Page.navigateToSprint2Page();
 
@@ -40,6 +41,8 @@ public class FillAppLifecycleFormsTest extends TestCase {
         Assert.assertTrue("Sprint 2 page is not visible",
                 driver.findElement(By.xpath(sprint2PageTitle))
                         .isDisplayed());
+
+
 
         Sprint3Page sprint3Page = sprint2Page.navigateToSprint3Page();
 
