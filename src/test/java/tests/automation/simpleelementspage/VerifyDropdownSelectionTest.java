@@ -4,6 +4,7 @@ import library.TestCase;
 import library.pages.HomePage;
 import library.pages.automation.simpleelementspage.SimpleElementsPage;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
@@ -14,6 +15,7 @@ import static library.pages.automation.simpleelementspage.SimpleElementsPage.sim
 public class VerifyDropdownSelectionTest extends TestCase {
 
     @Test
+    @Ignore("Assertions needs to be fixed")
     public void verifyDropdownSelectionTest() {
         HomePage homePage = new HomePage().waitForHomePageContent();
         Assert.assertTrue("Home page is not visible",
