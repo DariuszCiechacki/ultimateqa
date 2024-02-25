@@ -31,8 +31,8 @@ public class CreateFileWithAvailableCoursesTest extends TestCase {
                         .isDisplayed());
 
         Map<String, String> availableCoursesMap = fakeLandingPage.getAvailableCoursesData();
-        Set<String> availableCoursesList = availableCoursesMap.keySet();
-        System.out.println(availableCoursesList);
+
+        fakeLandingPage.createTextFileWithAvailableCourses(availableCoursesMap.keySet());
 
     }
 }
