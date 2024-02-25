@@ -10,16 +10,17 @@ import static drivers.Driver.driver;
 
 public class Sprint5Page {
 
-    public Sprint5Page waitForSprintOnePageContent(){
+    public Sprint5Page waitForSprint5PageContent(){
         new WebDriverWait(driver, Duration.ofSeconds(30)).
-                until(ExpectedConditions.elementToBeClickable(By.xpath("//h2[text() = 'Sprint 5']")));
+                until(ExpectedConditions.elementToBeClickable(By.xpath("//h2[text() = 'Iteration 5']")));
 
         return this;
     }
 
-    public Sprint5Page navigateToSprintTwoPage(){
+    public SampleApplicationForm submitForm(){
+        driver.findElement(By.xpath("//input[@value='Submit']"))
+                .click();
 
-
-        return new Sprint5Page();
+        return new SampleApplicationForm();
     }
 }

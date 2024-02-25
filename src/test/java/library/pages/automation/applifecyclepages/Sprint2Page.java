@@ -10,15 +10,16 @@ import static drivers.Driver.driver;
 
 public class Sprint2Page {
 
-    public Sprint2Page waitForSprintOnePageContent(){
+    public Sprint2Page waitForSprint2PageContent(){
         new WebDriverWait(driver, Duration.ofSeconds(30)).
-                until(ExpectedConditions.elementToBeClickable(By.xpath("//h2[text() = 'Sprint 2']")));
+                until(ExpectedConditions.elementToBeClickable(By.xpath("//h2[text() = 'Iteration 2']")));
 
         return this;
     }
 
     public Sprint3Page navigateToSprint3Page(){
-
+        driver.findElement(By.xpath("//a[contains(@href,'lifecycle-sprint-3')]"))
+                .click();
 
         return new Sprint3Page();
     }

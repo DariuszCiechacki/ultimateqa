@@ -8,19 +8,18 @@ import java.time.Duration;
 
 import static drivers.Driver.driver;
 
-public class Sprint1Page {
-
-    public Sprint1Page waitForSprintOnePageContent(){
+public class SampleApplicationForm {
+    public SampleApplicationForm waitForSprintOnePageContent(){
         new WebDriverWait(driver, Duration.ofSeconds(30)).
-                until(ExpectedConditions.elementToBeClickable(By.xpath("//h2[text() = 'Sprint 1']")));
+                until(ExpectedConditions.elementToBeClickable(By.xpath("//h2[text() = 'Iteration 5']")));
 
         return this;
     }
 
-    public Sprint2Page navigateToSprint2Page(){
-        driver.findElement(By.xpath("//a[contains(@href,'lifecycle-sprint-2')]"))
+    public SampleApplicationForm submitForm(){
+        driver.findElement(By.xpath("//input[@value='Submit']"))
                 .click();
 
-        return new Sprint2Page();
+        return new SampleApplicationForm();
     }
 }
