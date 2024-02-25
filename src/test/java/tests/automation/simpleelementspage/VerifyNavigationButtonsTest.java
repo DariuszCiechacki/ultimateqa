@@ -90,7 +90,7 @@ public class VerifyNavigationButtonsTest extends TestCase {
                         .isDisplayed());
 
         buttonSuccessPage = simpleElementsPage.navigateToButtonSuccessPage(
-                "//span[contains(@class,'et-pb-icon et-animated')]");
+                "//span[contains(@class,'image_wrap')]//span");
 
         buttonSuccessPage.waitForButtonSuccessPageContent();
         Assert.assertTrue("Button success page is not visible",
