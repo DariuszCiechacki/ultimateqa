@@ -1,5 +1,7 @@
 package library.pages.automation.applifecyclepages;
 
+import library.modules.automation.applifecycle.AppLifecycleDto;
+import library.modules.automation.applifecycle.forms.sprint3.Sprint3Form;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,6 +18,13 @@ public class Sprint3Page {
                 until(ExpectedConditions.elementToBeClickable(By.xpath(sprint3PageTitle)));
 
         return this;
+    }
+
+    public void fillSprint3Form(String radioValue, AppLifecycleDto appLifecycleDto){
+        new Sprint3Form()
+                .setRadiobutton(radioValue)
+                .enterFirstName(appLifecycleDto.getFirstName())
+                .enterLastName(appLifecycleDto.getLastName());
     }
 
     public Sprint4Page navigateToSprint4Page(){

@@ -42,7 +42,7 @@ public class FillAppLifecycleFormsTest extends TestCase {
                 driver.findElement(By.xpath(sprint2PageTitle))
                         .isDisplayed());
 
-
+        sprint2Page.fillSprint2Form(AppLifecycleFactory.createAppLifecycleFormData());
 
         Sprint3Page sprint3Page = sprint2Page.navigateToSprint3Page();
 
@@ -50,6 +50,8 @@ public class FillAppLifecycleFormsTest extends TestCase {
         Assert.assertTrue("Sprint 3 page is not visible",
                 driver.findElement(By.xpath(sprint3PageTitle))
                         .isDisplayed());
+
+        sprint3Page.fillSprint3Form("other", AppLifecycleFactory.createAppLifecycleFormData());
 
         Sprint4Page sprint4Page = sprint3Page.navigateToSprint4Page();
 

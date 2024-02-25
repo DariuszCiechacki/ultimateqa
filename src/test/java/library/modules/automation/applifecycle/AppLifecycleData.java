@@ -18,4 +18,12 @@ public class AppLifecycleData {
 
         return this;
     }
+
+    //ToDo change for finding and setting random radiobutton
+    public AppLifecycleData setRadiobutton(String value){
+        driver.findElement(By.xpath("//input[@name='gender' and @value='"+value+"']"))
+                .click();
+
+        return this;
+    }
 }
