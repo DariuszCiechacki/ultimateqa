@@ -14,7 +14,7 @@ import java.util.Map;
 import static drivers.Driver.driver;
 
 public class SimpleElementsPage {
-    public static final String simpleElementsPageTitle = "//div[@id='idExample']";
+    public static final String simpleElementsPageTitle = "//h3[contains(text(),'simple HTML elements')]";
 
     public SimpleElementsPage waitForSimpleElementsPageContent() {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
