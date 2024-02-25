@@ -3,7 +3,7 @@ package library.pages;
 import library.pages.automation.ComplicatedPage;
 import library.pages.automation.FakeLandingPage;
 import library.pages.automation.FillingOutFormsPage;
-import library.pages.automation.applifecyclepages.SprintOnePage;
+import library.pages.automation.applifecyclepages.Sprint1Page;
 import library.pages.automation.simpleelementspage.SimpleElementsPage;
 import library.pages.user.LoginPage;
 import org.openqa.selenium.By;
@@ -38,11 +38,11 @@ public class HomePage {
         return new FakeLandingPage();
     }
 
-    public SprintOnePage navigateToAppLifecyclePage(){
+    public Sprint1Page navigateToAppLifecyclePage(){
         driver.findElement(By.xpath("//a[contains(@href,'application-lifecycle')]"))
                 .click();
 
-        return new SprintOnePage();
+        return new Sprint1Page();
     }
 
     public FillingOutFormsPage navigateToFillingOutFormsPage(){

@@ -8,14 +8,18 @@ import java.time.Duration;
 
 import static drivers.Driver.driver;
 
-public class SprintOnePage {
+public class Sprint4Page {
 
-    public SprintOnePage waitForSprintOnePageContent(){
+    public Sprint4Page waitForSprintOnePageContent(){
         new WebDriverWait(driver, Duration.ofSeconds(30)).
-                until(ExpectedConditions.elementToBeClickable(By.xpath("//h2[text() = 'Sprint 1']")));
+                until(ExpectedConditions.elementToBeClickable(By.xpath("//h2[text() = 'Sprint 4']")));
 
         return this;
     }
 
+    public Sprint5Page navigateToSprint5Page(){
 
+
+        return new Sprint5Page();
+    }
 }
