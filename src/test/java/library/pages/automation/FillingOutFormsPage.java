@@ -54,6 +54,8 @@ public class FillingOutFormsPage {
     public List<String> getRequiredFieldsList(FormNumber formNumber) {
         int adjustedFormNumber = formNumber.getIndex();
 
+        waitForRequiredFieldsList();
+
         return driver.findElements(
                         By.xpath("//div[@id='et_pb_contact_form_" + adjustedFormNumber + "']//div[contains(@class,'contact-message')]//li"))
                 .stream().map(WebElement::getText).collect(Collectors.toList());
@@ -74,5 +76,10 @@ public class FillingOutFormsPage {
         submitButton.click();
 
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.invisibilityOf(submitButton));
+    }
+
+    private void waitForRequiredFieldsList(){
+        new WebDriverWait(driver, Duration.ofSeconds(30))
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,'contact-message')]")));
     }
 }

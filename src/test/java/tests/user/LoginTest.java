@@ -6,6 +6,7 @@ import library.pages.HomePage;
 import library.pages.courses.CollectionsPage;
 import library.pages.user.LoginPage;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
@@ -17,6 +18,7 @@ import static library.pages.user.LoginPage.loginPageTitle;
 public class LoginTest extends TestCase {
 
     @Test
+    @Ignore("Disabled because of the captcha after submitting login")
     public void loginTest() {
         HomePage homePage = new HomePage().waitForHomePageContent();
         Assert.assertTrue("Home page is not visible",

@@ -9,7 +9,7 @@ import java.time.Duration;
 import static drivers.Driver.driver;
 
 public class CollectionsPage {
-    public static final String collectionsPageTitle = "//main[@class='collections']";
+    public static final String collectionsPageTitle = "//h2[@class='collections__heading']";
 
     public CollectionsPage waitForCollectionsPageContent(){
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
