@@ -12,11 +12,12 @@ import java.util.stream.Collectors;
 
 public class ComplicatedPage extends Driver {
     public static final String complicatedPageTitle = "//span[@id='Skills_Improved']";
-    public static final String buttonsXpath = "//div[contains(@class,'et_pb_row et_pb_row_2 et_pb_row_4col')]//a";
+    public static final String buttonsXpath = "//div[contains(@class,'et_pb_button')]//a";
     public static final String socialMediaButtonsSectionXpath = "//div[contains(@class,'et_pb_row et_pb_row_4')]";
 
     public ComplicatedPage waitForComplicatedPageContent() {
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath(complicatedPageTitle)));
 
         return this;
