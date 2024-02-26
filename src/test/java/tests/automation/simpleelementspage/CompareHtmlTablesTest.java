@@ -1,6 +1,7 @@
 package tests.automation.simpleelementspage;
 
 import library.TestCase;
+import library.modules.automation.simplepage.TableType;
 import library.pages.HomePage;
 import library.pages.automation.simpleelementspage.SimpleElementsPage;
 import org.junit.Assert;
@@ -30,11 +31,15 @@ public class CompareHtmlTablesTest extends TestCase {
                 driver.findElement(By.xpath(simpleElementsPageTitle))
                         .isDisplayed());
 
-        Map<String, Map<String, String>> uniqueTableData = simpleHtmlElementsPage.getUniqueIdTableData();
+        Map<String, Map<String, String>> uniqueTableData = simpleHtmlElementsPage
+                .getSpecificTableData(TableType.WITH_ID.tableType());
+
         Assert.assertEquals("Incorrect unique id table size",
                 expectedTableSize, uniqueTableData.size());
 
-        Map<String, Map<String, String>> noIdTableData = simpleHtmlElementsPage.getNoIdTableData();
+        Map<String, Map<String, String>> noIdTableData = simpleHtmlElementsPage
+                .getSpecificTableData(TableType.WITHOUT_ID.tableType());
+
         Assert.assertEquals("Incorrect no id table size",
                 expectedTableSize, noIdTableData.size());
 

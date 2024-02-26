@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static drivers.Driver.driver;
@@ -23,12 +25,8 @@ public class SimpleElementsPage {
         return this;
     }
 
-    public Map<String, Map<String, String>> getUniqueIdTableData() {
-        return new TablesSectionData().getUniqueIdTableData();
-    }
-
-    public Map<String, Map<String, String>> getNoIdTableData() {
-        return new TablesSectionData().getNoIdTableData();
+    public Map<String, Map<String, String>> getSpecificTableData(WebElement table) {
+        return new TablesSectionData().getTableData(table);
     }
 
     public void setCheckbox(boolean desiredState, String... checkboxes) {
