@@ -47,7 +47,14 @@ public class SimpleElementsPage {
 
     public void selectDropdownOption(String value) {
         Select select = new Select(driver.findElement(By.xpath("//select")));
-        select.selectByValue(value);
+        select.selectByVisibleText(value);
+    }
+
+    public String getSelectedOption(){
+        Select select = new Select(driver.findElement(By.xpath("//select")));
+        WebElement selectedOption = select.getFirstSelectedOption();
+
+        return selectedOption.getText();
     }
 
     public ButtonSuccessPage navigateToButtonSuccessPage(String xPath) {

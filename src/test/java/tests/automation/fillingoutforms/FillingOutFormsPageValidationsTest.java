@@ -16,7 +16,6 @@ import static library.pages.automation.FillingOutFormsPage.fillingOutFormsTitle;
 
 public class FillingOutFormsPageValidationsTest extends TestCase {
 
-    //ToDo refactor assertions into one method with form number parameter
     @Test
     public void fillingOutFormsPageValidationsTest(){
         HomePage homePage = new HomePage().waitForHomePageContent();

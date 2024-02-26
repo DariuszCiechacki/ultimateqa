@@ -7,15 +7,17 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import static drivers.Driver.driver;
 import static library.pages.HomePage.homePageTitle;
 import static library.pages.automation.simpleelementspage.SimpleElementsPage.simpleElementsPageTitle;
 
 public class VerifyDropdownSelectionTest extends TestCase {
+    protected String selectOptionValue = "Volvo";
 
     @Test
-    @Ignore("Assertions needs to be fixed")
     public void verifyDropdownSelectionTest() {
         HomePage homePage = new HomePage().waitForHomePageContent();
         Assert.assertTrue("Home page is not visible",
@@ -29,10 +31,9 @@ public class VerifyDropdownSelectionTest extends TestCase {
                 driver.findElement(By.xpath(simpleElementsPageTitle))
                         .isDisplayed());
 
-        simpleElementsPage.selectDropdownOption("saab");
+        simpleElementsPage.selectDropdownOption(selectOptionValue);
 
-        //ToDo find a method for getting selected option value
-        /*Assert.assertEquals("Incorrect dropdown selection",
-                "Saab", driver.findElement(By.xpath("//select")).getText());*/
+        Assert.assertEquals("Incorrect dropdown selection",
+                selectOptionValue, simpleElementsPage.getSelectedOption());
     }
 }
