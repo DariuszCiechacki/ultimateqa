@@ -20,9 +20,9 @@ public class Sprint3Page {
         return this;
     }
 
-    public void fillSprint3Form(String radioValue, AppLifecycleDto appLifecycleDto){
+    public void fillSprint3Form(AppLifecycleDto appLifecycleDto){
         new Sprint3Form()
-                .setRadiobutton(radioValue)
+                .setRandomRadiobutton()
                 .enterFirstName(appLifecycleDto.getFirstName())
                 .enterLastName(appLifecycleDto.getLastName());
     }

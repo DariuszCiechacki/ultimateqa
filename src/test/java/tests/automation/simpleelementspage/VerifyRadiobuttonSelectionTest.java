@@ -27,7 +27,6 @@ public class VerifyRadiobuttonSelectionTest extends TestCase {
                 driver.findElement(By.xpath(simpleElementsPageTitle))
                         .isDisplayed());
 
-        //ToDo add setting radiobutton by random value method. Assertions with foreach for elements of radio excluding chosen one
         simpleHtmlElementsPage.setRadiobutton("male");
 
         Assert.assertTrue("Incorrect radiobutton selection",

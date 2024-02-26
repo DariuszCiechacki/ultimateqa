@@ -1,5 +1,6 @@
 package library.modules.automation.simplepage;
 
+import javafx.scene.control.Tab;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -8,46 +9,25 @@ import java.util.List;
 import java.util.Map;
 
 import static drivers.Driver.driver;
+import static java.lang.String.valueOf;
 
 public class TablesSectionData {
-    //ToDo refactor getting tables data, create one method with parameter and apply stream
-    public Map<String, Map<String, String>> getUniqueIdTableData(){
-        Map<String, Map<String, String>> uniqueIdTableData = new HashMap<>();
+    public Map<String, Map<String, String>> getTableData(WebElement table) {
+        Map<String, Map<String, String>> tableData = new HashMap<>();
 
-        WebElement table = driver.findElement(By.id("htmlTableId"));
-        List<WebElement> rows = table.findElements(By.xpath(".//td//ancestor::tr"));
+        List<WebElement> rows = table.findElements(By.xpath(".//tr"));
 
-        for (WebElement row : rows){
-            Map<String, String> rowDetails = new HashMap<>();
-
+        rows.forEach(row -> {
             List<WebElement> columns = row.findElements(By.xpath(".//td"));
+            if (!columns.isEmpty()) {
+                Map<String, String> rowDetails = new HashMap<>();
+                rowDetails.put("Salary", columns.get(2).getText());
+                rowDetails.put("Work", columns.get(1).getText());
 
-            rowDetails.put("Salary", columns.get(2).getText());
-            rowDetails.put("Work", columns.get(1).getText());
+                tableData.put(columns.get(0).getText(), rowDetails);
+            }
+        });
 
-            uniqueIdTableData.put(columns.get(0).getText(), rowDetails);
-        }
-
-        return uniqueIdTableData;
-    }
-
-    public Map<String, Map<String, String>> getNoIdTableData(){
-        Map<String, Map<String, String>> uniqueIdTableData = new HashMap<>();
-
-        WebElement table = driver.findElement(By.xpath("//table[not(@id='htmlTableId')]"));
-        List<WebElement> rows = table.findElements(By.xpath(".//td//ancestor::tr"));
-
-        for (WebElement row : rows){
-            Map<String, String> rowDetails = new HashMap<>();
-
-            List<WebElement> columns = row.findElements(By.xpath(".//td"));
-
-            rowDetails.put("Salary", columns.get(2).getText());
-            rowDetails.put("Work", columns.get(1).getText());
-
-            uniqueIdTableData.put(columns.get(0).getText(), rowDetails);
-        }
-
-        return uniqueIdTableData;
+        return tableData;
     }
 }
