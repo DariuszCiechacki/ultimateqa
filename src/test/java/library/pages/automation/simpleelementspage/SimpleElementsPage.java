@@ -34,13 +34,20 @@ public class SimpleElementsPage {
 
             if (checkboxField.isSelected() != desiredState) {
                 checkboxField.click();
+                new WebDriverWait(driver, Duration.ofSeconds(5))
+                        .until(ExpectedConditions.elementSelectionStateToBe(checkboxField, desiredState));
             }
         });
     }
 
-    public void setRadiobutton(String radiobutton) {
-        driver.findElement(By.xpath("//input[@name='gender' and @value='" + radiobutton + "']"))
-                .click();
+    public void setRadiobutton(String value) {
+        WebElement radiobutton = driver.findElement(By.xpath(
+                "//input[@name='gender' and @value='" + value + "']"));
+
+        radiobutton.click();
+
+        new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.elementSelectionStateToBe(radiobutton, true));
     }
 
     public void selectDropdownOption(String value) {
