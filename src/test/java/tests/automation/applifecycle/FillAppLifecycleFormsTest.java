@@ -50,7 +50,7 @@ public class FillAppLifecycleFormsTest extends TestCase {
                 driver.findElement(By.xpath(sprint3PageTitle))
                         .isDisplayed());
 
-        sprint3Page.fillSprint3Form("other", AppLifecycleFactory.createAppLifecycleFormData());
+        sprint3Page.fillSprint3Form(AppLifecycleFactory.createAppLifecycleFormData());
 
         sprint3Page.submitForm();
     }

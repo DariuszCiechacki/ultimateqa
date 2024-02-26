@@ -1,6 +1,10 @@
 package library.modules.automation.applifecycle;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
+import java.util.Random;
 
 import static drivers.Driver.driver;
 
@@ -19,10 +23,13 @@ public class AppLifecycleData {
         return this;
     }
 
-    //ToDo change for finding and setting random radiobutton
-    public AppLifecycleData setRadiobutton(String value){
-        driver.findElement(By.xpath("//input[@name='gender' and @value='"+value+"']"))
-                .click();
+    public AppLifecycleData setRandomRadiobutton(){
+        List<WebElement> radioButtons = driver.findElements(
+                By.xpath("//input[@name='gender']"));
+
+        int randomIndex = new Random().nextInt(radioButtons.size());
+
+        radioButtons.get(randomIndex).click();
 
         return this;
     }

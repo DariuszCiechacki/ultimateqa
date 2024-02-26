@@ -10,8 +10,8 @@ public class Sprint3Form implements Sprint3Interface {
     }
 
     @Override
-    public Sprint3Form setRadiobutton(String value) {
-        appLifecycleData.setRadiobutton(value);
+    public Sprint3Form setRandomRadiobutton() {
+        appLifecycleData.setRandomRadiobutton();
 
         return this;
     }

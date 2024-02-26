@@ -33,16 +33,10 @@ public class ComplicatedPage extends Driver {
                 .map(WebElement::getText).collect(Collectors.toList());
     }
 
-    /**
-     * Verifies that all buttons identified by the XPath in SectionOfButtonsData.buttonsXpath are enabled.
-     *
-     * @return true if all buttons are enabled, false otherwise.
-     */
     public boolean verifyButtonsState() {
         List<WebElement> elements = driver.findElements(By.xpath(buttonsXpath));
 
         if (elements.isEmpty()) {
-            //ToDo add throwing exception if list of elements is empty
             return false;
         }
 
