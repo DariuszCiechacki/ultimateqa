@@ -1,15 +1,11 @@
 package library.modules.automation.simplepage;
 
-import javafx.scene.control.Tab;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static drivers.Driver.driver;
-import static java.lang.String.valueOf;
 
 public class TablesSectionData {
     public Map<String, Map<String, String>> getTableData(WebElement table) {

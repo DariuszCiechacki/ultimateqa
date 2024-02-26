@@ -4,11 +4,8 @@ import library.TestCase;
 import library.pages.HomePage;
 import library.pages.automation.simpleelementspage.SimpleElementsPage;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
 import static drivers.Driver.driver;
 import static library.pages.HomePage.homePageTitle;
