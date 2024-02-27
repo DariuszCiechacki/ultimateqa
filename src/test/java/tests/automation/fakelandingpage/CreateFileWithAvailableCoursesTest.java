@@ -1,6 +1,7 @@
 package tests.automation.fakelandingpage;
 
 import library.TestCase;
+import library.files.UniqueFilePathsFactory;
 import library.pages.HomePage;
 import library.pages.automation.FakeLandingPage;
 import library.services.FilesHandler;
@@ -15,7 +16,7 @@ import static library.pages.HomePage.homePageTitle;
 import static library.pages.automation.FakeLandingPage.fakeLandingPageTitle;
 
 public class CreateFileWithAvailableCoursesTest extends TestCase {
-    protected final String filePath = "src/test/java/library/files/availableCourses.txt";
+    protected final String filePath = UniqueFilePathsFactory.generateAvailableCoursesFilePath();
 
     @Test
     public void createFileWithAvailableCoursesTest(){
