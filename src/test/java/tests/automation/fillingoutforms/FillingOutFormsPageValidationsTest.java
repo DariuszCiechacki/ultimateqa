@@ -11,8 +11,6 @@ import org.openqa.selenium.By;
 import java.util.List;
 
 import static drivers.Driver.driver;
-import static library.pages.HomePage.homePageTitle;
-import static library.pages.automation.FillingOutFormsPage.fillingOutFormsTitle;
 
 public class FillingOutFormsPageValidationsTest extends TestCase {
 
@@ -20,15 +18,13 @@ public class FillingOutFormsPageValidationsTest extends TestCase {
     public void fillingOutFormsPageValidationsTest(){
         HomePage homePage = new HomePage().waitForHomePageContent();
         Assert.assertTrue("Home page is not visible",
-                driver.findElement(By.xpath(homePageTitle))
-                        .isDisplayed());
+                homePage.homePageTitleElement.isDisplayed());
 
         FillingOutFormsPage fillingOutFormsPage = homePage.navigateToFillingOutFormsPage();
 
         fillingOutFormsPage.waitForFillingOutFormsPageContent();
         Assert.assertTrue("Filling out forms page is not visible",
-                driver.findElement(By.xpath(fillingOutFormsTitle))
-                        .isDisplayed());
+                fillingOutFormsPage.fillingOutFormsTitleElement.isDisplayed());
 
         fillingOutFormsPage.clickSubmitButton(FormNumber.FIRST_FORM);
 

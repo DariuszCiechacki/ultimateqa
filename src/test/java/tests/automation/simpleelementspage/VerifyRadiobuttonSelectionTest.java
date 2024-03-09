@@ -8,8 +8,6 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 
 import static drivers.Driver.driver;
-import static library.pages.HomePage.homePageTitle;
-import static library.pages.automation.simpleelementspage.SimpleElementsPage.simpleElementsPageTitle;
 
 public class VerifyRadiobuttonSelectionTest extends TestCase {
 
@@ -17,17 +15,15 @@ public class VerifyRadiobuttonSelectionTest extends TestCase {
     public void verifyRadiobuttonSelectionTest() {
         HomePage homePage = new HomePage().waitForHomePageContent();
         Assert.assertTrue("Home page is not visible",
-                driver.findElement(By.xpath(homePageTitle))
-                        .isDisplayed());
+                homePage.homePageTitleElement.isDisplayed());
 
-        SimpleElementsPage simpleHtmlElementsPage = homePage.navigateSimpleHtmlElementsPage();
+        SimpleElementsPage simpleElementsPage = homePage.navigateSimpleElementsPage();
 
-        simpleHtmlElementsPage.waitForSimpleElementsPageContent();
+        simpleElementsPage.waitForSimpleElementsPageContent();
         Assert.assertTrue("Simple html elements page is not visible",
-                driver.findElement(By.xpath(simpleElementsPageTitle))
-                        .isDisplayed());
+                simpleElementsPage.simpleElementsPageTitleElement.isDisplayed());
 
-        simpleHtmlElementsPage.setRadiobutton("male");
+        simpleElementsPage.setRadiobutton("male");
 
         Assert.assertTrue("Incorrect radiobutton selection",
                 driver.findElement(By.xpath("//input[@type='radio' and @value='male']"))

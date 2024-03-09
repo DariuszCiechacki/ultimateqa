@@ -7,6 +7,9 @@ import library.pages.automation.applifecyclepages.Sprint1Page;
 import library.pages.automation.simpleelementspage.SimpleElementsPage;
 import library.pages.user.LoginPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -15,53 +18,63 @@ import java.time.Duration;
 import static drivers.Driver.driver;
 
 public class HomePage {
-    public static final String homePageTitle = "//span[@id='Automation_Practice']";
+    public HomePage(){
+        PageFactory.initElements(driver, this);
+    }
+    @FindBy(id = "Automation_Practice")
+    public WebElement homePageTitleElement;
+    @FindBy(xpath = "//a[contains(@href,'complicated-page')]")
+    WebElement complicatedPageButton;
+    @FindBy(xpath = "//a[contains(@href,'fake-landing-page')]")
+    WebElement fakeLandingPageButton;
+    @FindBy(xpath = "//a[contains(@href,'application-lifecycle')]")
+    WebElement appLifecyclePageButton;
+    @FindBy(xpath = "//a[contains(@href,'filling-out-forms')]")
+    WebElement fillingOutFormsPageButton;
+    @FindBy(xpath = "//a[contains(@href,'simple-html-elements-for-automation')]")
+    WebElement simpleElementsPageButton;
+    @FindBy(xpath = "//a[contains(@href,'sign_in')]")
+    WebElement loginPageButton;
 
     public HomePage waitForHomePageContent(){
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
-                By.xpath(homePageTitle)));
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions
+                .elementToBeClickable(homePageTitleElement));
 
         return this;
     }
 
     public ComplicatedPage navigateToComplicatedPage(){
-        driver.findElement(By.xpath("//a[contains(@href,'complicated-page')]"))
-                .click();
+        complicatedPageButton.click();
 
         return new ComplicatedPage();
     }
 
     public FakeLandingPage navigateToFakeLandingPage(){
-        driver.findElement(By.xpath("//a[contains(@href,'fake-landing-page')]"))
-                .click();
+        fakeLandingPageButton.click();
 
         return new FakeLandingPage();
     }
 
     public Sprint1Page navigateToAppLifecyclePage(){
-        driver.findElement(By.xpath("//a[contains(@href,'application-lifecycle')]"))
-                .click();
+        appLifecyclePageButton.click();
 
         return new Sprint1Page();
     }
 
     public FillingOutFormsPage navigateToFillingOutFormsPage(){
-        driver.findElement(By.xpath("//a[contains(@href,'filling-out-forms')]"))
-                .click();
+        fillingOutFormsPageButton.click();
 
         return new FillingOutFormsPage();
     }
 
-    public SimpleElementsPage navigateSimpleHtmlElementsPage(){
-        driver.findElement(By.xpath("//a[contains(@href,'simple-html-elements-for-automation')]"))
-                .click();
+    public SimpleElementsPage navigateSimpleElementsPage(){
+        simpleElementsPageButton.click();
 
         return new SimpleElementsPage();
     }
 
     public LoginPage navigateToLoginPage(){
-        driver.findElement(By.xpath("//a[contains(@href,'sign_in')]"))
-                .click();
+        loginPageButton.click();
 
         return new LoginPage();
     }

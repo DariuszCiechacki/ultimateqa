@@ -10,8 +10,6 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 
 import static drivers.Driver.driver;
-import static library.pages.HomePage.homePageTitle;
-import static library.pages.automation.FillingOutFormsPage.fillingOutFormsTitle;
 
 public class FillAllFormsTest extends TestCase {
     protected final String successMessage = "Thanks for contacting us";
@@ -20,15 +18,13 @@ public class FillAllFormsTest extends TestCase {
     public void fillAllFormsTest(){
         HomePage homePage = new HomePage().waitForHomePageContent();
         Assert.assertTrue("Home page is not visible",
-                driver.findElement(By.xpath(homePageTitle))
-                        .isDisplayed());
+                homePage.homePageTitleElement.isDisplayed());
 
         FillingOutFormsPage fillingOutFormsPage = homePage.navigateToFillingOutFormsPage();
 
         fillingOutFormsPage.waitForFillingOutFormsPageContent();
         Assert.assertTrue("Filling out forms page is not visible",
-                driver.findElement(By.xpath(fillingOutFormsTitle))
-                        .isDisplayed());
+                fillingOutFormsPage.fillingOutFormsTitleElement.isDisplayed());
 
         fillingOutFormsPage.fillFormByNumber(FormNumber.FIRST_FORM, FormsFactory.createFormData());
         Assert.assertTrue("First form was not filled successfully",

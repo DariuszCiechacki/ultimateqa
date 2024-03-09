@@ -6,13 +6,8 @@ import library.pages.HomePage;
 import library.pages.automation.simpleelementspage.SimpleElementsPage;
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.By;
 
 import java.util.Map;
-
-import static drivers.Driver.driver;
-import static library.pages.HomePage.homePageTitle;
-import static library.pages.automation.simpleelementspage.SimpleElementsPage.simpleElementsPageTitle;
 
 public class CompareHtmlTablesTest extends TestCase {
     protected final int expectedTableSize = 3;
@@ -21,23 +16,21 @@ public class CompareHtmlTablesTest extends TestCase {
     public void compareHtmlTablesTest() {
         HomePage homePage = new HomePage().waitForHomePageContent();
         Assert.assertTrue("Home page is not visible",
-                driver.findElement(By.xpath(homePageTitle))
-                        .isDisplayed());
+                homePage.homePageTitleElement.isDisplayed());
 
-        SimpleElementsPage simpleHtmlElementsPage = homePage.navigateSimpleHtmlElementsPage();
+        SimpleElementsPage simpleElementsPage = homePage.navigateSimpleElementsPage();
 
-        simpleHtmlElementsPage.waitForSimpleElementsPageContent();
+        simpleElementsPage.waitForSimpleElementsPageContent();
         Assert.assertTrue("Simple html elements page is not visible",
-                driver.findElement(By.xpath(simpleElementsPageTitle))
-                        .isDisplayed());
+                simpleElementsPage.simpleElementsPageTitleElement.isDisplayed());
 
-        Map<String, Map<String, String>> uniqueTableData = simpleHtmlElementsPage
+        Map<String, Map<String, String>> uniqueTableData = simpleElementsPage
                 .getSpecificTableData(TableType.WITH_ID.tableType());
 
         Assert.assertEquals("Incorrect unique id table size",
                 expectedTableSize, uniqueTableData.size());
 
-        Map<String, Map<String, String>> noIdTableData = simpleHtmlElementsPage
+        Map<String, Map<String, String>> noIdTableData = simpleElementsPage
                 .getSpecificTableData(TableType.WITHOUT_ID.tableType());
 
         Assert.assertEquals("Incorrect no id table size",

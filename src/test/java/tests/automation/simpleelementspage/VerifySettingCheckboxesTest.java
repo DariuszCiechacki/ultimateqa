@@ -1,6 +1,7 @@
 package tests.automation.simpleelementspage;
 
 import library.TestCase;
+import library.modules.common.adapters.CheckboxesHandler;
 import library.pages.HomePage;
 import library.pages.automation.simpleelementspage.SimpleElementsPage;
 import org.junit.Assert;
@@ -8,8 +9,6 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 
 import static drivers.Driver.driver;
-import static library.pages.HomePage.homePageTitle;
-import static library.pages.automation.simpleelementspage.SimpleElementsPage.simpleElementsPageTitle;
 
 public class VerifySettingCheckboxesTest extends TestCase {
 
@@ -17,18 +16,16 @@ public class VerifySettingCheckboxesTest extends TestCase {
     public void verifySettingCheckboxesTest() {
         HomePage homePage = new HomePage().waitForHomePageContent();
         Assert.assertTrue("Home page is not visible",
-                driver.findElement(By.xpath(homePageTitle))
-                        .isDisplayed());
+                homePage.homePageTitleElement.isDisplayed());
 
-        SimpleElementsPage simpleHtmlElementsPage = homePage.navigateSimpleHtmlElementsPage();
+        SimpleElementsPage simpleElementsPage = homePage.navigateSimpleElementsPage();
 
-        simpleHtmlElementsPage.waitForSimpleElementsPageContent();
+        simpleElementsPage.waitForSimpleElementsPageContent();
         Assert.assertTrue("Simple html elements page is not visible",
-                driver.findElement(By.xpath(simpleElementsPageTitle))
-                        .isDisplayed());
+                simpleElementsPage.simpleElementsPageTitleElement.isDisplayed());
 
-        simpleHtmlElementsPage.setCheckbox(true, "Bike");
-        simpleHtmlElementsPage.setCheckbox(false, "Car");
+        CheckboxesHandler.setCheckboxes(true, "Bike");
+        CheckboxesHandler.setCheckboxes(false, "Car");
 
         Assert.assertTrue("Incorrect checkbox selection",
                 driver.findElement(By.xpath("//input[@name='vehicle' and @value='Bike']"))
@@ -38,7 +35,7 @@ public class VerifySettingCheckboxesTest extends TestCase {
                 driver.findElement(By.xpath("//input[@name='vehicle' and @value='Car']"))
                         .isSelected());
 
-        simpleHtmlElementsPage.setCheckbox(true, "Bike", "Car");
+        CheckboxesHandler.setCheckboxes(true, "Bike", "Car");
 
         Assert.assertTrue("Incorrect checkbox selection",
                 driver.findElement(By.xpath("//input[@name='vehicle' and @value='Bike']"))
@@ -48,7 +45,7 @@ public class VerifySettingCheckboxesTest extends TestCase {
                 driver.findElement(By.xpath("//input[@name='vehicle' and @value='Car']"))
                         .isSelected());
 
-        simpleHtmlElementsPage.setCheckbox(false, "Bike", "Car");
+        CheckboxesHandler.setCheckboxes(false, "Bike", "Car");
 
         Assert.assertFalse("Incorrect checkbox selection",
                 driver.findElement(By.xpath("//input[@name='vehicle' and @value='Bike']"))

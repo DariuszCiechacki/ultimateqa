@@ -3,9 +3,11 @@ package library.pages.automation;
 import library.modules.automation.fillingoutforms.FormNumber;
 import library.modules.automation.fillingoutforms.FormsData;
 import library.modules.automation.fillingoutforms.FormsDto;
-import library.services.CaptchaHandler;
+import library.modules.common.adapters.CaptchaHandler;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -16,11 +18,16 @@ import java.util.stream.Collectors;
 import static drivers.Driver.driver;
 
 public class FillingOutFormsPage {
-    public static final String fillingOutFormsTitle = "//textarea[@name='et_pb_contact_message_0']";
+    public FillingOutFormsPage(){
+        PageFactory.initElements(driver, this);
+    }
+
+    @FindBy(xpath = "//textarea[@name='et_pb_contact_message_0']")
+    public WebElement fillingOutFormsTitleElement;
 
     public FillingOutFormsPage waitForFillingOutFormsPageContent() {
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
-                By.xpath(fillingOutFormsTitle)));
+        new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions
+                .elementToBeClickable(fillingOutFormsTitleElement));
 
         return this;
     }
