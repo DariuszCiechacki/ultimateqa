@@ -4,18 +4,12 @@ import library.TestCase;
 import library.pages.HomePage;
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.By;
-
-import static drivers.Driver.driver;
-import static library.pages.HomePage.homePageTitle;
 
 public class OpenHomePageTest extends TestCase {
-
     @Test
     public void openPageTest() {
-        new HomePage().waitForHomePageContent();
+        HomePage homePage = new HomePage().waitForHomePageContent();
         Assert.assertTrue("Home page is not visible",
-                driver.findElement(By.xpath(homePageTitle))
-                        .isDisplayed());
+                homePage.homePageTitleElement.isDisplayed());
     }
 }
