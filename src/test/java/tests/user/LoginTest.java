@@ -8,12 +8,6 @@ import library.pages.user.LoginPage;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.openqa.selenium.By;
-
-import static drivers.Driver.driver;
-import static library.pages.HomePage.homePageTitle;
-import static library.pages.courses.CollectionsPage.collectionsPageTitle;
-import static library.pages.user.LoginPage.loginPageTitle;
 
 public class LoginTest extends TestCase {
 
@@ -22,15 +16,13 @@ public class LoginTest extends TestCase {
     public void loginTest() {
         HomePage homePage = new HomePage().waitForHomePageContent();
         Assert.assertTrue("Home page is not visible",
-                driver.findElement(By.xpath(homePageTitle))
-                        .isDisplayed());
+                homePage.homePageTitleElement.isDisplayed());
 
         LoginPage loginPage = homePage.navigateToLoginPage();
 
         loginPage.waitForLoginPageContent();
         Assert.assertTrue("Login page is not visible",
-                driver.findElement(By.xpath(loginPageTitle))
-                        .isDisplayed());
+                loginPage.loginPageTitleElement.isDisplayed());
 
         CollectionsPage collectionsPage = loginPage.enterSignInCredentials(
                 ConfigLoader.getProperty("userEmail"),
@@ -38,8 +30,7 @@ public class LoginTest extends TestCase {
 
         collectionsPage.waitForCollectionsPageContent();
         Assert.assertTrue("Collections page is not visible",
-                driver.findElement(By.xpath(collectionsPageTitle))
-                        .isDisplayed());
+                collectionsPage.collectionsPageTitleElement.isDisplayed());
 
         Assert.assertTrue("User was not logged in successfully",
                 loginPage.isLoggedIn());

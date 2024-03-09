@@ -1,6 +1,9 @@
 package library.pages.automation;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -11,11 +14,15 @@ import java.util.stream.Collectors;
 import static drivers.Driver.driver;
 
 public class FakeLandingPage {
-    public static final String fakeLandingPageTitle = "//a[contains(@class,'et_pb_button et_pb_button_1')]";
+    public FakeLandingPage(){
+        PageFactory.initElements(driver, this);
+    }
+    @FindBy(xpath = "//a[contains(@class,'et_pb_button et_pb_button_1')]")
+    public WebElement fakeLandingPageTitleElement;
 
     public FakeLandingPage waitForFakeLandingPageContent() {
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(
-                By.xpath(fakeLandingPageTitle)));
+        new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions
+                .elementToBeClickable(fakeLandingPageTitleElement));
 
         return this;
     }

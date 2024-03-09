@@ -6,12 +6,8 @@ import library.pages.automation.simpleelementspage.ButtonSuccessPage;
 import library.pages.automation.simpleelementspage.SimpleElementsPage;
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.By;
 
 import static drivers.Driver.driver;
-import static library.pages.HomePage.homePageTitle;
-import static library.pages.automation.simpleelementspage.ButtonSuccessPage.buttonSuccessPageTitle;
-import static library.pages.automation.simpleelementspage.SimpleElementsPage.simpleElementsPageTitle;
 
 public class VerifyNavigationButtonsTest extends TestCase {
 
@@ -19,82 +15,68 @@ public class VerifyNavigationButtonsTest extends TestCase {
     public void verifyNavigationButtonsTest(){
         HomePage homePage = new HomePage().waitForHomePageContent();
         Assert.assertTrue("Home page is not visible",
-                driver.findElement(By.xpath(homePageTitle))
-                        .isDisplayed());
+                homePage.homePageTitleElement.isDisplayed());
 
         SimpleElementsPage simpleElementsPage = homePage.navigateSimpleElementsPage();
 
         simpleElementsPage.waitForSimpleElementsPageContent();
         Assert.assertTrue("Simple html elements page is not visible",
-                driver.findElement(By.xpath(simpleElementsPageTitle))
-                        .isDisplayed());
+                simpleElementsPage.simpleElementsPageTitleElement.isDisplayed());
 
-        ButtonSuccessPage buttonSuccessPage = simpleElementsPage.navigateToButtonSuccessPage(
-                "//a[@id='idExample']");
+        simpleElementsPage.byIdButton.click();
+
+        ButtonSuccessPage buttonSuccessPage = new ButtonSuccessPage();
 
         buttonSuccessPage.waitForButtonSuccessPageContent();
-        Assert.assertTrue("Button success page is not visible",
-                driver.findElement(By.xpath("//h1[@class='entry-title']"))
-                        .isDisplayed());
+        Assert.assertTrue("By ID button was not clicked correctly",
+                buttonSuccessPage.buttonSuccessPageTitleElement.isDisplayed());
 
         driver.navigate().back();
 
         simpleElementsPage.waitForSimpleElementsPageContent();
         Assert.assertTrue("Simple html elements page is not visible",
-                driver.findElement(By.xpath(simpleElementsPageTitle))
-                        .isDisplayed());
+                simpleElementsPage.simpleElementsPageTitleElement.isDisplayed());
 
-        buttonSuccessPage = simpleElementsPage.navigateToButtonSuccessPage(
-                "//a[@href='../link-success/']");
+        simpleElementsPage.byLinkTextButton.click();
 
         buttonSuccessPage.waitForButtonSuccessPageContent();
-        Assert.assertTrue("Button success page is not visible",
-                driver.findElement(By.xpath(buttonSuccessPageTitle))
-                        .isDisplayed());
+        Assert.assertTrue("By link text button was not clicked correctly",
+                buttonSuccessPage.buttonSuccessPageTitleElement.isDisplayed());
 
         driver.navigate().back();
 
         simpleElementsPage.waitForSimpleElementsPageContent();
         Assert.assertTrue("Simple html elements page is not visible",
-                driver.findElement(By.xpath(simpleElementsPageTitle))
-                        .isDisplayed());
+                simpleElementsPage.simpleElementsPageTitleElement.isDisplayed());
 
-        buttonSuccessPage = simpleElementsPage.navigateToButtonSuccessPage(
-                "//button[@class='buttonClass']");
+        simpleElementsPage.byClassNameButton.click();
 
         buttonSuccessPage.waitForButtonSuccessPageContent();
-        Assert.assertTrue("Button success page is not visible",
-                driver.findElement(By.xpath(buttonSuccessPageTitle))
-                        .isDisplayed());
+        Assert.assertTrue("By class name button was not clicked correctly",
+                buttonSuccessPage.buttonSuccessPageTitleElement.isDisplayed());
 
         driver.navigate().back();
 
         simpleElementsPage.waitForSimpleElementsPageContent();
         Assert.assertTrue("Simple html elements page is not visible",
-                driver.findElement(By.xpath(simpleElementsPageTitle))
-                        .isDisplayed());
+                simpleElementsPage.simpleElementsPageTitleElement.isDisplayed());
 
-        buttonSuccessPage = simpleElementsPage.navigateToButtonSuccessPage(
-                "//button[@name='button1']");
+        simpleElementsPage.byNameButton.click();
 
         buttonSuccessPage.waitForButtonSuccessPageContent();
-        Assert.assertTrue("Button success page is not visible",
-                driver.findElement(By.xpath(buttonSuccessPageTitle))
-                        .isDisplayed());
+        Assert.assertTrue("By name button was not clicked correctly",
+                buttonSuccessPage.buttonSuccessPageTitleElement.isDisplayed());
 
         driver.navigate().back();
 
         simpleElementsPage.waitForSimpleElementsPageContent();
         Assert.assertTrue("Simple html elements page is not visible",
-                driver.findElement(By.xpath(simpleElementsPageTitle))
-                        .isDisplayed());
+                simpleElementsPage.simpleElementsPageTitleElement.isDisplayed());
 
-        buttonSuccessPage = simpleElementsPage.navigateToButtonSuccessPage(
-                "//span[contains(@class,'image_wrap')]//span");
+        simpleElementsPage.byClickableIcon.click();
 
         buttonSuccessPage.waitForButtonSuccessPageContent();
-        Assert.assertTrue("Button success page is not visible",
-                driver.findElement(By.xpath(buttonSuccessPageTitle))
-                        .isDisplayed());
+        Assert.assertTrue("By clickable icon button was not clicked correctly",
+                buttonSuccessPage.buttonSuccessPageTitleElement.isDisplayed());
     }
 }
