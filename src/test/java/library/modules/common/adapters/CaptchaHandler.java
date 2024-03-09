@@ -1,4 +1,4 @@
-package library.services;
+package library.modules.common.adapters;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

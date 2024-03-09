@@ -21,7 +21,7 @@ public class VerifyDropdownSelectionTest extends TestCase {
                 driver.findElement(By.xpath(homePageTitle))
                         .isDisplayed());
 
-        SimpleElementsPage simpleElementsPage = homePage.navigateSimpleHtmlElementsPage();
+        SimpleElementsPage simpleElementsPage = homePage.navigateSimpleElementsPage();
 
         simpleElementsPage.waitForSimpleElementsPageContent();
         Assert.assertTrue("Simple html elements page is not visible",

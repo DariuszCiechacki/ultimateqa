@@ -4,7 +4,7 @@ import library.TestCase;
 import library.files.UniqueFilePathsFactory;
 import library.pages.HomePage;
 import library.pages.automation.FakeLandingPage;
-import library.services.FilesHandler;
+import library.modules.common.adapters.FilesHandler;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;

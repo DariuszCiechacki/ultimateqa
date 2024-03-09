@@ -1,4 +1,4 @@
-package library.services;
+package library.modules.common.adapters;
 
 import java.io.BufferedWriter;
 import java.io.File;

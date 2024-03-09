@@ -3,7 +3,7 @@ package library.pages.automation;
 import library.modules.automation.fillingoutforms.FormNumber;
 import library.modules.automation.fillingoutforms.FormsData;
 import library.modules.automation.fillingoutforms.FormsDto;
-import library.services.CaptchaHandler;
+import library.modules.common.adapters.CaptchaHandler;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;

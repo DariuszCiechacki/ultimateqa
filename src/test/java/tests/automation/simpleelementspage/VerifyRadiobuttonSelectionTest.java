@@ -20,7 +20,7 @@ public class VerifyRadiobuttonSelectionTest extends TestCase {
                 driver.findElement(By.xpath(homePageTitle))
                         .isDisplayed());
 
-        SimpleElementsPage simpleHtmlElementsPage = homePage.navigateSimpleHtmlElementsPage();
+        SimpleElementsPage simpleHtmlElementsPage = homePage.navigateSimpleElementsPage();
 
         simpleHtmlElementsPage.waitForSimpleElementsPageContent();
         Assert.assertTrue("Simple html elements page is not visible",
