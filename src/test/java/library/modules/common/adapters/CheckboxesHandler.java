@@ -18,11 +18,4 @@ public class CheckboxesHandler {
             }
         }
     }
-
-    public boolean verifyCheckboxSelection(WebElement checkbox){
-        if (checkbox.isSelected()){
-            return true;
-        }
-        return false;
-    }
 }
