@@ -23,7 +23,7 @@ public class VerifyButtonsTextTest extends TestCase {
                 complicatedPage.complicatedPageTitleElement.isDisplayed());
 
         Assert.assertEquals("Incorrect number of buttons", expectedNumberOfButtons,
-                complicatedPage.countButtonsInSectionOfButtons());
+                complicatedPage.buttonElement.size());
 
         complicatedPage.getButtonsText().forEach(buttonText -> Assert.assertEquals(
                 "Button text does not match",

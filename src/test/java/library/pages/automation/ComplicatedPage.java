@@ -12,7 +12,9 @@ import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ComplicatedPage extends Driver {
+import static drivers.Driver.driver;
+
+public class ComplicatedPage{
     public ComplicatedPage(){
         PageFactory.initElements(driver, this);
     }
@@ -20,12 +22,14 @@ public class ComplicatedPage extends Driver {
     public WebElement complicatedPageTitleElement;
     @FindBy(xpath = "//div[contains(@class,'et_pb_button')]//a")
     public List<WebElement> buttonElement;
-    @FindBy(xpath = "//div[contains(@class,'et_pb_row et_pb_row_4')]")
-    public WebElement socialMediaButton;
+    @FindBy(xpath = "//div[contains(@class,'et_pb_row et_pb_row_4')]//li[contains(@class,'et-social-facebook')]//a")
+    public List<WebElement> facebookSocialMediaButton;
+    @FindBy(xpath = "//div[contains(@class,'et_pb_row et_pb_row_4')]//li[contains(@class,'et-social-twitter')]//a")
+    public List<WebElement> twitterSocialMediaButton;
     @FindBy(id = "A_toggle")
     WebElement toggleElement;
     @FindBy(xpath = "//div[contains(@class,'et_pb_toggle_content clearfix')]")
-    WebElement toggleContentElement;
+    public WebElement toggleContentElement;
 
     public ComplicatedPage waitForComplicatedPageContent() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -35,9 +39,6 @@ public class ComplicatedPage extends Driver {
     }
 
     //Section of buttons
-    public int countButtonsInSectionOfButtons() {
-        return buttonElement.size();
-    }
 
     public List<String> getButtonsText() {
         return buttonElement.stream()
@@ -54,9 +55,13 @@ public class ComplicatedPage extends Driver {
     }
 
     //section of social media follows
-    public List<String> getSocialMediaNavigationLinks(String socialMedia) {
-        return driver.findElements(By.xpath(
-                        socialMediaButton + "//li[contains(@class,'et-social-" + socialMedia + "')]//a")).stream()
+    public List<String> getFacebookSocialMediaNavigationLinks() {
+        return facebookSocialMediaButton.stream()
+                .map(WebElement -> WebElement.getAttribute("href")).collect(Collectors.toList());
+    }
+
+    public List<String> getTwitterSocialMediaNavigationLinks() {
+        return twitterSocialMediaButton.stream()
                 .map(WebElement -> WebElement.getAttribute("href")).collect(Collectors.toList());
     }
 
@@ -66,10 +71,6 @@ public class ComplicatedPage extends Driver {
         waitForToggleToExpand();
 
         return this;
-    }
-
-    public String getToggleText() {
-        return toggleContentElement.getText();
     }
 
     private void waitForToggleToExpand() {

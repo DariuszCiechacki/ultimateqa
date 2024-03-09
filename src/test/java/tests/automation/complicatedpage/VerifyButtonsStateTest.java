@@ -22,7 +22,7 @@ public class VerifyButtonsStateTest extends TestCase {
                 complicatedPage.complicatedPageTitleElement.isDisplayed());
 
         Assert.assertEquals("Incorrect number of buttons", expectedNumberOfButtons,
-                complicatedPage.countButtonsInSectionOfButtons());
+                complicatedPage.buttonElement.size());
 
         Assert.assertTrue("Buttons are not enabled",
                 complicatedPage.verifyButtonsState());

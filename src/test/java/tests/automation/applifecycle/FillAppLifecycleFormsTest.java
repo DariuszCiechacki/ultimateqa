@@ -2,6 +2,7 @@ package tests.automation.applifecycle;
 
 import library.TestCase;
 import library.modules.automation.applifecycle.AppLifecycleFactory;
+import library.modules.common.adapters.WebDriverActions;
 import library.pages.HomePage;
 import library.pages.automation.applifecyclepages.Sprint1Page;
 import library.pages.automation.applifecyclepages.Sprint2Page;
@@ -40,6 +41,6 @@ public class FillAppLifecycleFormsTest extends TestCase {
 
         sprint3Page.fillSprint3Form(AppLifecycleFactory.createAppLifecycleFormData());
 
-        sprint3Page.submitForm();
+        WebDriverActions.scrollToElementAndClick(sprint3Page.submitFormButton);
     }
 }

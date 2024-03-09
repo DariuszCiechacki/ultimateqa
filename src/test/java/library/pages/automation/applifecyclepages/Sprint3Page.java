@@ -25,7 +25,7 @@ public class Sprint3Page {
     @FindBy(name = "lastname")
     WebElement lastNameInput;
     @FindBy(xpath = "//input[@type='submit']")
-    WebElement submitFormButton;
+    public WebElement submitFormButton;
 
     public Sprint3Page waitForSprint3PageContent(){
         new WebDriverWait(driver, Duration.ofSeconds(15)).
@@ -38,10 +38,6 @@ public class Sprint3Page {
         setRandomRadiobutton();
         firstNameInput.sendKeys(appLifecycleDto.getFirstName());
         lastNameInput.sendKeys(appLifecycleDto.getLastName());
-    }
-
-    public void submitForm(){
-        submitFormButton.click();
     }
 
     private void setRandomRadiobutton(){

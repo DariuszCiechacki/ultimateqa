@@ -24,6 +24,6 @@ public class VerifyToggleTextTest extends TestCase {
         complicatedPage.expandToggle();
 
         Assert.assertEquals("Incorrect inside toggle text",
-                expectedToggleText, complicatedPage.getToggleText());
+                expectedToggleText, complicatedPage.toggleContentElement.getText());
     }
 }

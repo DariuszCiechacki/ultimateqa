@@ -25,8 +25,8 @@ public class VerifySocialMediaButtonsLinkTest extends TestCase {
         Assert.assertTrue("Complicated page is not visible",
                 complicatedPage.complicatedPageTitleElement.isDisplayed());
 
-        List<String> twitterNavigationLinks = complicatedPage.getSocialMediaNavigationLinks("twitter");
-        List<String> facebookNavigationLinks = complicatedPage.getSocialMediaNavigationLinks("facebook");
+        List<String> twitterNavigationLinks = complicatedPage.getTwitterSocialMediaNavigationLinks();
+        List<String> facebookNavigationLinks = complicatedPage.getFacebookSocialMediaNavigationLinks();
 
         Assert.assertEquals("Incorrect twitter links number",
                 expectedSocialMediaLinksNumber, twitterNavigationLinks.size());
