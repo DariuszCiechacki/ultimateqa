@@ -21,9 +21,10 @@ public class VerifyDropdownSelectionTest extends TestCase {
         Assert.assertTrue("Simple html elements page is not visible",
                 simpleElementsPage.simpleElementsPageTitleElement.isDisplayed());
 
-        simpleElementsPage.selectDropdownOption(selectOptionValue);
+        simpleElementsPage.selectElement.selectByVisibleText(selectOptionValue);
 
         Assert.assertEquals("Incorrect dropdown selection",
-                selectOptionValue, simpleElementsPage.getSelectedOption());
+                selectOptionValue, simpleElementsPage.selectElement
+                        .getFirstSelectedOption().getText());
     }
 }

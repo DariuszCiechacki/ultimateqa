@@ -11,12 +11,18 @@ import static drivers.Driver.driver;
 public class CheckboxesHandler {
     public static void setCheckboxes(boolean state, String... values) {
         for (String value : values) {
-            WebElement checkboxLabel = driver.findElement(By.xpath("//label[contains(@for,'checkbox') and text()='" + value + "']"));
-            WebElement checkbox = checkboxLabel.findElement(By.xpath(".//preceding-sibling::input"));
+            WebElement checkbox = driver.findElement(By.xpath("//input[@type='checkbox' and @value='"+value+"']"));
 
             if (checkbox.isSelected() != state) {
-                WebDriverActions.scrollToElementAndClick(checkboxLabel);
+                WebDriverActions.scrollToElementAndClick(checkbox);
             }
         }
+    }
+
+    public boolean verifyCheckboxSelection(WebElement checkbox){
+        if (checkbox.isSelected()){
+            return true;
+        }
+        return false;
     }
 }

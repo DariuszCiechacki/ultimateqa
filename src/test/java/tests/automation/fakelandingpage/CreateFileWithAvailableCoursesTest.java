@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import java.util.Map;
 
-
 public class CreateFileWithAvailableCoursesTest extends TestCase {
     protected final String filePath = UniqueFilePathsFactory.generateAvailableCoursesFilePath();
 

@@ -21,7 +21,7 @@ public class SimpleElementsPage {
     @FindBy(xpath = "//h3[contains(text(),'simple HTML elements')]")
     public WebElement simpleElementsPageTitleElement;
     @FindBy(xpath = "//select")
-    Select selectElement;
+    public Select selectElement;
     @FindBy(id = "idExample")
     public WebElement byIdButton;
     @FindBy(xpath = "//a[text()='Click me using this link text!']")
@@ -52,13 +52,5 @@ public class SimpleElementsPage {
 
         new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.elementSelectionStateToBe(radiobutton, true));
-    }
-
-    public void selectDropdownOption(String value) {
-        selectElement.selectByVisibleText(value);
-    }
-
-    public String getSelectedOption(){
-        return selectElement.getFirstSelectedOption().getText();
     }
 }
